@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -42,6 +43,10 @@ public class MainActivity extends AppCompatActivity
 
         // Call method to initialize handler and object
         initHandlersandObject();
+        // Sets the MainFragment as default fragment.
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame,new MainFragment());
+        fragmentTransaction.commit();
     }
 
     protected void onPause(){
