@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity
         // Saves the Purchase ArrayList to storage
         editor.putString("PurchaseList",purchaseHandler.getPurchaseListforStorage());
         // Saves the Top Value to storage
-        editor.putInt("topValue",purchaseHandler.getTop());
+        editor.putInt("TopValue",purchaseHandler.getTop());
         // Saves the Total Purchase Amount to storage
         editor.putFloat("NetPAmt",purchaseHandler.getTotalPAmt());
         editor.commit();
