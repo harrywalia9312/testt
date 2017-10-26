@@ -49,6 +49,12 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
         return view;
     }
 
+    public void onResume(){
+        super.onResume();
+        // On resume fragment
+        initializeStatus();
+    }
+
     private void initializeStatus(){
         // Sets the Transaction total amount text
         TextView textView = (TextView) view.findViewById(R.id.PL_PurchaseTotalAmt);
