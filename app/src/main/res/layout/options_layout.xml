@@ -132,6 +132,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/OptionsIncomeInputText"
+                android:imeOptions="actionDone"
                 android:inputType="numberDecimal"
                 android:textAlignment="center" />
 
@@ -142,6 +143,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/OptionsDeductionsInputText"
+                android:imeOptions="actionDone"
                 android:inputType="numberDecimal"
                 android:singleLine="false"
                 android:textAlignment="center" />
