@@ -27,6 +27,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/PurchaseInputText1"
+                android:imeOptions="actionDone"
                 android:inputType="textPersonName"
                 android:textSize="15sp" />
 
@@ -37,6 +38,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/PurchaseInputText2"
+                android:imeOptions="actionDone"
                 android:inputType="numberDecimal"
                 android:textSize="15sp" />
 
