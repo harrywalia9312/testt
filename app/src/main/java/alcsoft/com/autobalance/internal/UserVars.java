@@ -7,7 +7,7 @@ import com.google.gson.Gson;
  * This object stores the user defined Income value (Float), Deductions value (Float)
  * and keeps the updated Net Income (Float)
  *
- * Created by ALCRamirez94 on 8/16/2017.
+ * Created by ALCRamirez94 on 8/16/2017
  * Ver 1.0
  */
 
