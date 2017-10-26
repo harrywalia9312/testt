@@ -5,4 +5,33 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="MenuOption1">Available Balance</string>
+    <string name="MenuOption2">Manage Purchases</string>
+    <string name="MenuOption3">Affordability Checker</string>
+    <string name="MenuOption4">Setup Balance</string>
+
+    <!--  Main Layout -->
+    <string name="TopText1">You currently have:</string>
+    <string name="TopText2">to spend.</string>
+    <string name="BottomText1">Your total amount spent on purchases is :</string>
+
+    <!-- Purchase List -->
+    <string name="PurchaseInputText1">Purchase Name</string>
+    <string name="PurchaseInputText2">Amount</string>
+    <string name="PurchaseListText1">List of Purchases (Most Recent)</string>
+    <string name="PurchaseListText2">Total Amount spent on purchases</string>
+    <string name="RemoveLastPurchaseButtonText">Remove Last Purchase</string>
+    <string name="RemoveAllPurchasesButtonText">Remove All Purchases</string>
+
+    <!-- Options Layout -->
+    <string name="OptionsTopText1">Current Saved Settings</string>
+    <string name="OptionsIncomeText1">Income</string>
+    <string name="OptionsDeductionsText1">Deductions</string>
+    <string name="OptionsNetIncomeText1">Net Income</string>
+    <string name="OptionsInputIncomeTitleText">Setup Income and Deductions</string>
+    <string name="OptionsIncomeInputText">Income</string>
+    <string name="OptionsDeductionsInputText">Deductions</string>
+    <string name="OptionsIncomeTooltip">Income - Use the income amount calculated after taxes. Refer to your paycheck for more information</string>
+    <string name="OptionsDeductionsTooltip">Deductions - Be as accurate as you can be with this value, this is the average value of monthly fixed bills. (eg. fixed payments, etc)</string>
+    <string name="OptionsSaveButtonText">Save</string>
 </resources>
