@@ -94,7 +94,7 @@ public class PurchaseHandler {
     }
 
     public String getTotalPAmtString(){
-        return Float.toString(TotalPAmt);
+        return String.format(java.util.Locale.US,"%.2f",TotalPAmt);
     }
 
     // Top Accessor
