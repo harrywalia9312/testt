@@ -1,5 +1,6 @@
 package alcsoft.com.autobalance;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 
 import alcsoft.com.autobalance.internal.PurchaseHandler;
 import alcsoft.com.autobalance.internal.UserVars;
@@ -126,6 +128,12 @@ public class MainActivity extends AppCompatActivity
         int tempint = sharedPreferences.getInt("TopValue",0);
         float tempfl = sharedPreferences.getFloat("NetPAmt",0.00f);
         purchaseHandler = new PurchaseHandler(data,tempint,tempfl);
+    }
+
+    // Method to close keyboard
+    public static void hidekeyboard(Context context){
+        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(((Activity) context).getWindow().getCurrentFocus().getWindowToken(),0);
     }
 
     public static void updateSpendingAmt(){
