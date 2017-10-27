@@ -7,8 +7,8 @@ package alcsoft.com.autobalance.internal;
  * Accessors return the values and their appropriate datatypes with the exception of the purchase amount, it returns
  * a float and a string value.
  *
- * Created by ALCRamirez94 on 8/16/2017.
- * Ver 1.0
+ * Created by ALCRamirez94 on 8/16/2017. Revised 10/27/2017
+ * Ver 1.1
  */
 
 public class Purchase {
