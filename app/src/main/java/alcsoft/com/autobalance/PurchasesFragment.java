@@ -22,8 +22,8 @@ import java.util.Calendar;
  * This class uses the purchases_layout and handles input and output Purchase Objects
  * and updates the list.
  *
- * Created by ALCRamirez94 on 8/16/2017.
- * Ver 1.0
+ * Created by ALCRamirez94 on 8/16/2017. Revised 10/27/2017
+ * Ver 1.1
  */
 
 public class PurchasesFragment extends Fragment implements View.OnClickListener {
@@ -75,6 +75,9 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.PL_AddPurchaseToList:
+                // Calls method to close keyboard.
+                MainActivity.hidekeyboard(this.getContext());
+
                 EditText editText = (EditText) view.findViewById(R.id.PL_PurchaseAmountInputField);
                 System.out.print("Before IF");
                 System.out.print(editText.getText().toString().isEmpty());
