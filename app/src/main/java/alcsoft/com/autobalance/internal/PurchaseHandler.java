@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * This object handles the ArrayList of Purchase objects. Provides accessors and mutators functions
  * to the ArrayList. It also returns the ArrayList as a JSON object for storage use.
  *
- * Created by ALCRamirez94 on 8/16/2017.
- * Ver 1.0
+ * Created by ALCRamirez94 on 8/16/2017. Revised 10/27/2017
+ * Ver 1.1
  */
 
 public class PurchaseHandler {
