@@ -7,8 +7,8 @@ import com.google.gson.Gson;
  * This object stores the user defined Income value (Float), Deductions value (Float)
  * and keeps the updated Net Income (Float)
  *
- * Created by ALCRamirez94 on 8/16/2017
- * Ver 1.0
+ * Created by ALCRamirez94 on 8/16/2017 Revised: 10/27/2017
+ * Ver 1.1
  */
 
 public class UserVars {
@@ -48,7 +48,7 @@ public class UserVars {
     }
 
     public String getUserIncomeString(){
-        return Float.toString(UserIncome);
+        return String.format(java.util.Locale.US,"%.2f",UserIncome);
     }
 
     // UserDeductions Accessors
@@ -57,7 +57,7 @@ public class UserVars {
     }
 
     public String getUserDeductionsString(){
-        return Float.toString(UserDeductions);
+        return String.format(java.util.Locale.US,"%.2f",UserDeductions);
     }
 
     // UserNetIncome Accessors
@@ -66,7 +66,7 @@ public class UserVars {
     }
 
     public String getUserNetIncomeString(){
-        return Float.toString(UserNetIncome);
+        return String.format(java.util.Locale.US,"%.2f",UserNetIncome);
     }
 
     // Object Accessor
