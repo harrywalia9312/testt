@@ -17,8 +17,8 @@ import android.widget.Toast;
  * This object has the methods for the Options_Layout. It allows users
  * to setup values to be used later in the program.
  *
- * Created by ALCRamirez94 on 8/16/2017.
- * Ver 1.0
+ * Created by ALCRamirez94 on 8/16/2017. Revised 10/27/2017
+ * Ver 1.1
  */
 
 public class SetupFragment extends Fragment implements View.OnClickListener {
