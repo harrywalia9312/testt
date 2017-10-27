@@ -31,7 +31,7 @@ public class Purchase {
     }
 
     public String getPAmtString(){
-        return Float.toString(PAmt);
+        return String.format(java.util.Locale.US,"%.2f",PAmt);
     }
     public float getPAmt(){
         return PAmt;
