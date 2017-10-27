@@ -43,6 +43,8 @@ public class SetupFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.SaveOptionsButton:
+                // Calls method to hide keyboard after click.
+                MainActivity.hidekeyboard(this.getContext());
                 // Temporary float value
                 float temp1 = 0.00f;
                 float temp2 = 0.00f;
