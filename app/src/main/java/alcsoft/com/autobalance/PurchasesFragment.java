@@ -88,11 +88,23 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
                     case DialogInterface.BUTTON_POSITIVE:
                         // Performs List Reset
                         MainActivity.purchaseHandler.resetList();
+                        // calls list adapter to update
                         listAdapter.notifyDataSetChanged();
+                        // shows success dialog.
                         Toast.makeText(getActivity(),"All purchases removed!",Toast.LENGTH_SHORT).show();
                         updateStatus();
 
                         break;
+                    case DialogInterface.BUTTON_NEUTRAL:
+                        // Performs Remove last purchase
+                        MainActivity.purchaseHandler.removeLastTransaction();
+                        // calls list adapter to update
+                        listAdapter.notifyDataSetChanged();
+                        updateStatus();
+                        // Shows success dialog.
+                        Toast.makeText(getActivity(),"Last Recent Purchase Removed.", Toast.LENGTH_SHORT).show();
+                        break;
+
                     case DialogInterface.BUTTON_NEGATIVE:
                         // Shows Dialog. No Changes made.
                         Toast.makeText(getActivity(),"Nothing was Changed",Toast.LENGTH_SHORT).show();
@@ -208,9 +220,13 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.PL_RemoveLastPurchaseButton:
-                MainActivity.purchaseHandler.removeLastTransaction();
-                listAdapter.notifyDataSetChanged();
-                updateStatus();
+                // Shows alert dialoge and handles user input.
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Remove Last Purchase");
+                builder.setMessage("This will remove the most recent purchase from the list. Are you sure?");
+                builder.setNeutralButton("Yes", dialogClickListener);
+                builder.setNegativeButton("No",dialogClickListener);
+                builder.show();
                 break;
         }
     }
