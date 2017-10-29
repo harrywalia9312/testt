@@ -117,13 +117,13 @@ public class SetupFragment extends Fragment{
                 updateSettings();
                 // Outputs appropriate response message using toast
                 Toast toast;
-                if(incomechk == true & deductionschk == true){
+                if(incomechk & deductionschk){
                     toast = Toast.makeText(getActivity(),"I'm not going to calculate that. Please use realistic values.",Toast.LENGTH_LONG);
                     toast.show();
-                }else if(incomechk == true & deductionschk == false){
+                }else if(incomechk & !deductionschk){
                     toast = Toast.makeText(getActivity(),"Quit lying, nobody makes that kind of money.",Toast.LENGTH_LONG);
                     toast.show();
-                }else if(incomechk == false & deductionschk == true){
+                }else if(!incomechk & deductionschk){
                     toast = Toast.makeText(getActivity(),"I don't think you'll ever have any money to spend if you pay THAT MUCH each month.",Toast.LENGTH_LONG);
                     toast.show();
                 }else{
