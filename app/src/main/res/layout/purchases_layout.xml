@@ -90,18 +90,7 @@
         android:id="@+id/PL_RemoveLastPurchaseButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/PL_ResetListButton"
-        android:text="@string/RemoveLastPurchaseButtonText" />
-
-    <Button
-        android:id="@+id/PL_ResetListButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:text="@string/RemoveAllPurchasesButtonText"
-        android:textColor="#ffffff" />
-
+        android:layout_marginBottom="30dp"
+        android:text="@string/RemoveLastPurchaseButtonText" />
 </RelativeLayout>

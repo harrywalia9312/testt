@@ -1,10 +1,15 @@
 package alcsoft.com.autobalance;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -25,7 +30,7 @@ import java.util.Calendar;
  * and updates the list.
  *
  * Created by ALCRamirez94 on 8/16/2017. Revised 10/29/2017
- * Ver 1.2
+ * Ver 1.3
  */
 
 public class PurchasesFragment extends Fragment implements View.OnClickListener {
@@ -34,6 +39,7 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
     private ListAdapter listAdapter;
     private EditText PurchaseNameEdit;
     private EditText PurchaseAmtEdit;
+    private DialogInterface.OnClickListener dialogClickListener;
     View view;
 
     @Nullable
@@ -73,6 +79,28 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
             }
         });
 
+        // Sets DialogListener To listen to dialog clicks.
+        dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Checks user's response.
+                switch(which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        // Performs List Reset
+                        MainActivity.purchaseHandler.resetList();
+                        listAdapter.notifyDataSetChanged();
+                        Toast.makeText(getActivity(),"All purchases removed!",Toast.LENGTH_SHORT).show();
+                        updateStatus();
+
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        // Shows Dialog. No Changes made.
+                        Toast.makeText(getActivity(),"Nothing was Changed",Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        };
+
         return view;
     }
 
@@ -82,7 +110,38 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
         initializeStatus();
     }
 
+    // Creates the menu in the action bar
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        // Clears any menu before
+        menu.clear();
+        // Inflates the specific menu
+        inflater.inflate(R.menu.purchaseslistlayout_menu,menu);
+    }
+
+    // Handles the menu click
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            // If menu item is seleceted.
+            case R.id.action_PLSettings:
+                // Builds alert dialog and shows it.
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Remove All Purchases");
+                builder.setMessage("This will remove all purchases from the list. Are you Sure?");
+                builder.setPositiveButton("Yes", dialogClickListener);
+                builder.setNegativeButton("No",dialogClickListener);
+                builder.show();
+                break;
+            default:
+                // Do nothing
+        }
+        return true;
+    }
+
     private void initializeStatus(){
+        // Sets teh action bar
+        setHasOptionsMenu(true);
         // Sets the Transaction total amount text
         TextView textView = (TextView) view.findViewById(R.id.PL_PurchaseTotalAmt);
         textView.setText("$ "+MainActivity.purchaseHandler.getTotalPAmtString());
@@ -151,13 +210,6 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
             case R.id.PL_RemoveLastPurchaseButton:
                 MainActivity.purchaseHandler.removeLastTransaction();
                 listAdapter.notifyDataSetChanged();
-                updateStatus();
-                break;
-
-            case R.id.PL_ResetListButton:
-                MainActivity.purchaseHandler.resetList();
-                listAdapter.notifyDataSetChanged();
-                Toast.makeText(getActivity(),"List was reset!",Toast.LENGTH_SHORT).show();
                 updateStatus();
                 break;
         }

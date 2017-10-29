@@ -5,7 +5,11 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <!-- Action_Bar menu names-->
+    <string name="action_PLSettings">Reset Purchase List</string>
+    <string name="action_OPSettings">Reset Default Values</string>
+
+    <!-- Main_Drawer menu names-->
     <string name="MenuOption1">Available Balance</string>
     <string name="MenuOption2">Manage Purchases</string>
     <string name="MenuOption3">Affordability Checker</string>
