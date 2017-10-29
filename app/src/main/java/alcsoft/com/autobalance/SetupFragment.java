@@ -121,10 +121,10 @@ public class SetupFragment extends Fragment{
                     toast = Toast.makeText(getActivity(),"I'm not going to calculate that. Please use realistic values.",Toast.LENGTH_LONG);
                     toast.show();
                 }else if(incomechk == true & deductionschk == false){
-                    toast = Toast.makeText(getActivity(),"Quit lying, nobody makes that kind of money. Options Saved Successfully",Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getActivity(),"Quit lying, nobody makes that kind of money.",Toast.LENGTH_LONG);
                     toast.show();
                 }else if(incomechk == false & deductionschk == true){
-                    toast = Toast.makeText(getActivity(),"I don't think you'll ever have any money to spend if you pay THAT MUCH each month. Options Saved Successfully.",Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getActivity(),"I don't think you'll ever have any money to spend if you pay THAT MUCH each month.",Toast.LENGTH_LONG);
                     toast.show();
                 }else{
                     toast = Toast.makeText(getActivity(), "Options Saved Successfully.", Toast.LENGTH_SHORT);
