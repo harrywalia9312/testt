@@ -7,7 +7,7 @@
 
     <!-- Action_Bar menu names-->
     <string name="action_PLSettings">Reset Purchase List</string>
-    <string name="action_OPSettings">Reset Default Values</string>
+    <string name="action_OPSettings">Reset Values</string>
 
     <!-- Main_Drawer menu names-->
     <string name="MenuOption1">Available Balance</string>

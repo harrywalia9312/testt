@@ -1,11 +1,16 @@
 package alcsoft.com.autobalance;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -23,7 +28,7 @@ import org.w3c.dom.Text;
  * to setup values to be used later in the program.
  *
  * Created by ALCRamirez94 on 8/16/2017. Revised 10/29/2017
- * Ver 1.2
+ * Ver 1.3
  */
 
 public class SetupFragment extends Fragment{
@@ -31,16 +36,22 @@ public class SetupFragment extends Fragment{
     View view;
     private EditText IncomeEdit;
     private EditText DeductionEdit;
+    private DialogInterface.OnClickListener dialogListener;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.options_layout, container, false);
+        // Creates the options menu in actionbar
+        setHasOptionsMenu(true);
         // Loads the current saved options
         updateSettings();
 
+        // Initializes EditTexts for later use.
         IncomeEdit = (EditText) view.findViewById(R.id.IncomeInputField);
         DeductionEdit = (EditText) view.findViewById(R.id.DeductionsInputField);
+
+        // Listeners intialized for keyboard actions and handlers
         IncomeEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -66,8 +77,60 @@ public class SetupFragment extends Fragment{
             }
         });
 
+        // DialogListener listens for user response and handles them here.
+        dialogListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Checks user's response.
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        // Resets values to 0
+                        MainActivity.userVars.setUserDeductions(0.00f);
+                        MainActivity.userVars.setUserIncome(0.00f);
+                        // Refreshes the textView for current numbers.
+                        updateSettings();
+                        // Shows success dialog
+                        Toast.makeText(getActivity(),"Values Reset!",Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        // Shows Dialog. No Changes made.
+                        Toast.makeText(getActivity(), "Nothing was Changed", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        };
 
         return view;
+    }
+
+    // Creates and inflates the menu
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        // Clears any menu
+        menu.clear();
+        // Sets the menu to specific one and inflates it.
+        inflater.inflate(R.menu.optionslayout_menu,menu);
+    }
+
+    // Handles Menu clicks
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            // If menu item is selected.
+            case R.id.action_OPSettings:
+                // Builds alert dialog and shows it.
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Reset Values");
+                builder.setMessage("This will use 0 as the default income and deduction values. Are you sure?");
+                builder.setPositiveButton("Yes", dialogListener);
+                builder.setNegativeButton("No",dialogListener);
+                builder.show();
+                break;
+            default:
+                // Do nothing
+        }
+        return true;
     }
 
     private void getEditTextOps() {
