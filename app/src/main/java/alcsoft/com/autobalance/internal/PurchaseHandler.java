@@ -46,8 +46,15 @@ public class PurchaseHandler {
     public void addPurchase(String namein, String datein, float amtin){
         // Adds the top value by 1
         Top = Top + 1;
-        // Adds the total float value
-        TotalPAmt = TotalPAmt + amtin;
+        // Overflow check
+        if(TotalPAmt+amtin <= 99999999.99f){
+            // Set to maximum value.
+            TotalPAmt = 9999999.99f;
+        }else {
+            // Adds the total float value
+            TotalPAmt = TotalPAmt + amtin;
+        }
+
         // Creates a new purchase object
         Purchase purchase = new Purchase(namein,datein,amtin);
         // Adds it to the top list
