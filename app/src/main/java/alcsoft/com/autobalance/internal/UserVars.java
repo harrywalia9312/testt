@@ -34,11 +34,18 @@ public class UserVars {
     }
 
     // UserIncome and UserDeduction Mutator
-    public void setUserValues(float inincome, float indeductions){
-        // Sets the UserIncome and UserDeduction value
-        UserIncome = inincome;
-        UserDeductions = indeductions;
-        // Updates the NetIncome
+    public void setUserIncome(float incomeIn){
+        UserIncome = incomeIn;
+        updateValues();
+    }
+
+    public void setUserDeductions(float deductionsIn){
+        UserDeductions = deductionsIn;
+        updateValues();
+    }
+
+    private void updateValues(){
+        // Updates the user income
         UserNetIncome = UserIncome - UserDeductions;
     }
 

@@ -45,41 +45,40 @@ public class SetupFragment extends Fragment implements View.OnClickListener {
             case R.id.SaveOptionsButton:
                 // Calls method to hide keyboard after click.
                 MainActivity.hidekeyboard(this.getContext());
-                // Temporary float value
+                // Temp variable
                 float temp1 = 0.00f;
-                float temp2 = 0.00f;
-                // Trys to convert income value to float
+                // Assigns editText to IncomeInputField
                 EditText editText = (EditText) view.findViewById(R.id.IncomeInputField);
-                try{
-
-                    temp1 += Float.valueOf(editText.getText().toString());
-                }catch(Exception e){
+                // Checks if Field is empty
+                if(editText.getText().toString().isEmpty()){
                     // Do Nothing
-                }finally{
+                }else{
+                    // Passes user income to temp variable as float
+                    temp1 = Float.valueOf(editText.getText().toString());
+                    MainActivity.userVars.setUserIncome(temp1);
+                    // Clears editText focus and value
                     editText.clearFocus();
                     editText.getText().clear();
                 }
-
+                // Assign the editText to the Deductions input field
                 editText = (EditText) view.findViewById(R.id.DeductionsInputField);
-                try{
-
-                    temp2 = Float.valueOf(editText.getText().toString());
-                }catch(Exception e){
+                // Checks if field is empty
+                if(editText.getText().toString().isEmpty()){
                     // Do Nothing
-                }finally{
+                }else{
+                    // Passes user deduction to temp variable as float
+                    temp1 = Float.valueOf(editText.getText().toString());
+                    MainActivity.userVars.setUserDeductions(temp1);
+                    // Clers edittext focus and value
                     editText.clearFocus();
                     editText.getText().clear();
                 }
-
-                MainActivity.userVars.setUserValues(temp1,temp2);
-
                 // Refreshes the options
                 updateSettings();
                 // Outputs success message
                 Toast.makeText(getActivity(),"Options Saved Successfully!",Toast.LENGTH_SHORT).show();
                 break;
         }
-
     }
 
     private void updateSettings(){
