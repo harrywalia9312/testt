@@ -3,9 +3,11 @@ package alcsoft.com.autobalance;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,14 +24,16 @@ import java.util.Calendar;
  * This class uses the purchases_layout and handles input and output Purchase Objects
  * and updates the list.
  *
- * Created by ALCRamirez94 on 8/16/2017. Revised 10/27/2017
- * Ver 1.1
+ * Created by ALCRamirez94 on 8/16/2017. Revised 10/29/2017
+ * Ver 1.2
  */
 
 public class PurchasesFragment extends Fragment implements View.OnClickListener {
 
     private ListView listView;
     private ListAdapter listAdapter;
+    private EditText PurchaseNameEdit;
+    private EditText PurchaseAmtEdit;
     View view;
 
     @Nullable
@@ -39,12 +43,35 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
         // Calls the initialization method
         initializeStatus();
 
-        final Button addPurchaseButton = (Button) view.findViewById(R.id.PL_AddPurchaseToList);
-        addPurchaseButton.setOnClickListener(this);
         final Button resetPurchaseListButton = (Button) view.findViewById(R.id.PL_ResetListButton);
         resetPurchaseListButton.setOnClickListener(this);
         final Button removeLastTransaction = (Button) view.findViewById(R.id.PL_RemoveLastPurchaseButton);
         removeLastTransaction.setOnClickListener(this);
+        PurchaseNameEdit = (EditText) view.findViewById(R.id.PL_PurchaseNameInputField);
+        PurchaseAmtEdit = (EditText) view.findViewById(R.id.PL_PurchaseAmountInputField);
+
+        // Sets OnActionListeners for Input Fields
+        PurchaseNameEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_NEXT){
+                    PurchaseAmtEdit.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        PurchaseAmtEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_DONE){
+                    performInputOperations();
+                    return true;
+                }
+                    return false;
+            }
+        });
 
         return view;
     }
@@ -71,60 +98,56 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
         textView.setText("$ "+MainActivity.purchaseHandler.getTotalPAmtString());
     }
 
+    private void performInputOperations(){
+        // Calls method to close keyboard.
+        MainActivity.hidekeyboard(this.getContext());
+        // Checks if the input field is empty
+        if(PurchaseAmtEdit.getText().toString().isEmpty()){
+            // Returns a message that field is empty
+            Toast.makeText(getActivity(),"Please enter a purchase amount.",Toast.LENGTH_SHORT).show();
+            // Clears edit text and focus of AmtField
+            PurchaseAmtEdit.getText().clear();
+            PurchaseAmtEdit.clearFocus();
+            // Clears edit text and focus of NameField
+            PurchaseAmtEdit.getText().clear();
+            PurchaseAmtEdit.clearFocus();
+        }else{
+            // Checks if number is inbounds
+            if(Float.valueOf(PurchaseAmtEdit.getText().toString())>= 99999999.99f){
+                // Handles the exception... seriously you cant afford it.
+                Toast.makeText(getActivity(),"You and I both know you can't afford this...",Toast.LENGTH_LONG).show();
+                // Clears edit text and focus.
+                PurchaseAmtEdit.getText().clear();
+                PurchaseAmtEdit.clearFocus();
+            }else{
+                // Proceeds normally.
+                String temp;
+                String date;
+                float tempfl;
+
+                tempfl = Float.valueOf(PurchaseAmtEdit.getText().toString());
+                PurchaseAmtEdit.clearFocus();
+                PurchaseAmtEdit.getText().clear();
+
+                temp = PurchaseNameEdit.getText().toString();
+                // Gets the current date and saves it to a string
+                Calendar c = Calendar.getInstance();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yy");
+                date = simpleDateFormat.format(c.getTime());
+                // Sends to list
+                MainActivity.purchaseHandler.addPurchase(temp,date,tempfl);
+                PurchaseNameEdit.clearFocus();
+                PurchaseNameEdit.getText().clear();
+                listAdapter.notifyDataSetChanged();
+                updateStatus();
+                Toast.makeText(getActivity(),"Purchase Added!",Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.PL_AddPurchaseToList:
-                // Calls method to close keyboard.
-                MainActivity.hidekeyboard(this.getContext());
-                // Assigns the EditText PurchaseAmountInputField
-                EditText editText = (EditText) view.findViewById(R.id.PL_PurchaseAmountInputField);
-                // Checks if the input field is empty
-                if(editText.getText().toString().isEmpty()){
-                    // Returns a message that field is empty
-                    Toast.makeText(getActivity(),"Please enter a purchase amount.",Toast.LENGTH_SHORT).show();
-                    // Clears edit text and focus of AmtField
-                    editText.getText().clear();
-                    editText.clearFocus();
-                    // Clears edit text and focus of NameField
-                    editText = (EditText) view.findViewById(R.id.PL_PurchaseNameInputField);
-                    editText.getText().clear();
-                    editText.clearFocus();
-                }else{
-                    // Checks if number is inbounds
-                    if(Float.valueOf(editText.getText().toString())>= 99999999.99f){
-                        // Handles the exception... seriously you cant afford it.
-                        Toast.makeText(getActivity(),"You and I both know you can't afford this...",Toast.LENGTH_LONG).show();
-                        // Clears edit text and focus.
-                        editText.getText().clear();
-                        editText.clearFocus();
-                    }else{
-                        // Proceeds normally.
-                        String temp;
-                        String date;
-                        float tempfl;
-
-                        tempfl = Float.valueOf(editText.getText().toString());
-                        editText.clearFocus();
-                        editText.getText().clear();
-
-                        // Gets the name of the purchase list item
-                        editText = (EditText) view.findViewById(R.id.PL_PurchaseNameInputField);
-                        temp = editText.getText().toString();
-                        // Gets the current date and saves it to a string
-                        Calendar c = Calendar.getInstance();
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yy");
-                        date = simpleDateFormat.format(c.getTime());
-                        // Sends to list
-                        MainActivity.purchaseHandler.addPurchase(temp,date,tempfl);
-                        editText.clearFocus();
-                        editText.getText().clear();
-                        listAdapter.notifyDataSetChanged();
-                        updateStatus();
-                        Toast.makeText(getActivity(),"Purchase Added!",Toast.LENGTH_SHORT).show();
-                    }
-                }
-                break;
             case R.id.PL_RemoveLastPurchaseButton:
                 MainActivity.purchaseHandler.removeLastTransaction();
                 listAdapter.notifyDataSetChanged();
