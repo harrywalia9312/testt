@@ -3,6 +3,7 @@ package alcsoft.com.autobalance;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,36 +48,65 @@ public class SetupFragment extends Fragment implements View.OnClickListener {
                 MainActivity.hidekeyboard(this.getContext());
                 // Temp variable
                 float temp1 = 0.00f;
-                // Assigns editText to IncomeInputField
+                // Float overflow boolean variables
+                boolean incomechk = false;
+                boolean deductionschk = false;
+                // Assigns editText1 to IncomeInputField
                 EditText editText = (EditText) view.findViewById(R.id.IncomeInputField);
                 // Checks if Field is empty
                 if(editText.getText().toString().isEmpty()){
                     // Do Nothing
                 }else{
-                    // Passes user income to temp variable as float
-                    temp1 = Float.valueOf(editText.getText().toString());
-                    MainActivity.userVars.setUserIncome(temp1);
-                    // Clears editText focus and value
-                    editText.clearFocus();
-                    editText.getText().clear();
+                    // Checks if number is out of bounds
+                    if(Float.valueOf(editText.getText().toString())>= 99999999.99f){
+                        // Handles exception... literally nobody has that much money coming in unless you're a drug lord.
+                        incomechk = true;
+                    }else{
+                        // Passes user income to temp variable as float
+                        temp1 = Float.valueOf(editText.getText().toString());
+                        MainActivity.userVars.setUserIncome(temp1);
+                    }
                 }
+                // Clears editText focus and value
+                editText.clearFocus();
+                editText.getText().clear();
                 // Assign the editText to the Deductions input field
                 editText = (EditText) view.findViewById(R.id.DeductionsInputField);
                 // Checks if field is empty
                 if(editText.getText().toString().isEmpty()){
                     // Do Nothing
                 }else{
-                    // Passes user deduction to temp variable as float
-                    temp1 = Float.valueOf(editText.getText().toString());
-                    MainActivity.userVars.setUserDeductions(temp1);
-                    // Clers edittext focus and value
-                    editText.clearFocus();
-                    editText.getText().clear();
+                    // Checks if number is out of bounds
+                    if(Float.valueOf(editText.getText().toString())>= 99999999.99f){
+                        // Handles exception... literally nobody has that much bills... er.. I mean personally if you have that much bills to pay, what are  you a country?
+                        deductionschk = true;
+                    }else{
+                        // Passes user deduction to temp variable as float
+                        temp1 = Float.valueOf(editText.getText().toString());
+                        MainActivity.userVars.setUserDeductions(temp1);
+                    }
                 }
+                // Clers edittext focus and value
+                editText.clearFocus();
+                editText.getText().clear();
                 // Refreshes the options
                 updateSettings();
-                // Outputs success message
-                Toast.makeText(getActivity(),"Options Saved Successfully!",Toast.LENGTH_SHORT).show();
+                // Outputs appropriate response message using toast
+                Toast toast;
+                if(incomechk == true & deductionschk == true){
+                    toast = Toast.makeText(getActivity(),"I'm not going to calculate that. Please use realistic values.",Toast.LENGTH_LONG);
+                    toast.show();
+                }else if(incomechk == true & deductionschk == false){
+                    toast = Toast.makeText(getActivity(),"Quit lying, nobody makes that kind of money. Options Saved Successfully",Toast.LENGTH_LONG);
+                    toast.show();
+                }else if(incomechk == false & deductionschk == true){
+                    toast = Toast.makeText(getActivity(),"I don't think you'll ever have any money to spend if you pay THAT MUCH each month. Options Saved Successfully.",Toast.LENGTH_LONG);
+                    toast.show();
+                }else{
+                    toast = Toast.makeText(getActivity(), "Options Saved Successfully.", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
                 break;
         }
     }
