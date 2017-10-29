@@ -47,7 +47,7 @@ public class PurchaseHandler {
         // Adds the top value by 1
         Top = Top + 1;
         // Overflow check
-        if(TotalPAmt+amtin <= 99999999.99f){
+        if(TotalPAmt+amtin >= 99999999.99f){
             // Set to maximum value.
             TotalPAmt = 9999999.99f;
         }else {
