@@ -1,121 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/PL_PurchaseNameInputField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@id/PL_AddPurchaseToList"
+        android:hint="@string/PurchaseInputText1"
+        android:imeOptions="actionNext"
+        android:inputType="text|textCapWords|textNoSuggestions"
+        android:singleLine="true"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/PL_PurchaseAmountInputField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/PL_PurchaseNameInputField"
+        android:layout_toLeftOf="@id/PL_AddPurchaseToList"
+        android:hint="@string/PurchaseInputText2"
+        android:imeOptions="actionDone"
+        android:imeActionLabel="Add to List"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/PL_AddPurchaseToList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/textView9"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:drawable/ic_menu_add"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:textAlignment="center"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/textView9"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PL_PurchaseAmountInputField"
+        android:text="@string/PurchaseListText1"
+        android:textAlignment="center" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
+    <ListView
+        android:id="@+id/PL_PurchaseList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView9"
+        android:layout_above="@id/textView14"
+        android:scrollbars="horizontal" />
 
-        <LinearLayout
-            android:id="@+id/PurchaseInputFields"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/PL_RemoveLastPurchaseButton"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:text="@string/PurchaseListText2" />
 
-            <EditText
-                android:id="@+id/PL_PurchaseNameInputField"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/PurchaseInputText1"
-                android:imeOptions="actionDone"
-                android:inputType="textPersonName"
-                android:textSize="15sp" />
+    <TextView
+        android:id="@+id/PL_PurchaseTotalAmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/PL_RemoveLastPurchaseButton"
+        android:layout_toRightOf="@id/textView14"
+        android:layout_alignParentRight="true"
+        android:text="$ 0000.00"
+        android:textAlignment="center"/>
 
-            <EditText
-                android:id="@+id/PL_PurchaseAmountInputField"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/PurchaseInputText2"
-                android:imeOptions="actionDone"
-                android:inputType="numberDecimal"
-                android:textSize="15sp" />
+    <Button
+        android:id="@+id/PL_RemoveLastPurchaseButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/PL_ResetListButton"
+        android:text="@string/RemoveLastPurchaseButtonText" />
 
-            <Button
-                android:id="@+id/PL_AddPurchaseToList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Add Purchase"
-                android:textAlignment="center"
-                android:textSize="7sp" />
-
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="15dp" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/PurchaseListText1"
-            android:textAlignment="center" />
-
-        <ListView
-            android:id="@+id/PL_PurchaseList"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:scrollbars="horizontal" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <LinearLayout
-            android:id="@+id/TransactionTextFields"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/PurchaseListText2"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/PL_PurchaseTotalAmt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="$ 0000.00" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <Button
-            android:id="@+id/PL_RemoveLastPurchaseButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/RemoveLastPurchaseButtonText" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <Button
-            android:id="@+id/PL_ResetListButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/RemoveAllPurchasesButtonText" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/PL_ResetListButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/RemoveAllPurchasesButtonText" />
 
 </RelativeLayout>

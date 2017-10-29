@@ -11,15 +11,15 @@
     <string name="MenuOption4">Setup Balance</string>
 
     <!--  Main Layout -->
-    <string name="TopText1">You currently have:</string>
+    <string name="TopText1">You currently have</string>
     <string name="TopText2">to spend.</string>
-    <string name="BottomText1">Your total amount spent on purchases is :</string>
+    <string name="BottomText1">Your total amount spent on purchases is</string>
 
     <!-- Purchase List -->
     <string name="PurchaseInputText1">Purchase Name</string>
-    <string name="PurchaseInputText2">Amount</string>
+    <string name="PurchaseInputText2">Purchase Amount</string>
     <string name="PurchaseListText1">List of Purchases (Most Recent)</string>
-    <string name="PurchaseListText2">Total Amount spent on purchases</string>
+    <string name="PurchaseListText2">Total Amount spent on purchases :</string>
     <string name="RemoveLastPurchaseButtonText">Remove Last Purchase</string>
     <string name="RemoveAllPurchasesButtonText">Remove All Purchases</string>
 
