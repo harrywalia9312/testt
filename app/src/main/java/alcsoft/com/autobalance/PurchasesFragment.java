@@ -83,7 +83,11 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
                 if(editText.getText().toString().isEmpty()){
                     // Returns a message that field is empty
                     Toast.makeText(getActivity(),"Please enter a purchase amount.",Toast.LENGTH_SHORT).show();
-                    // Clears edit text and focus.
+                    // Clears edit text and focus of AmtField
+                    editText.getText().clear();
+                    editText.clearFocus();
+                    // Clears edit text and focus of NameField
+                    editText = (EditText) view.findViewById(R.id.PL_PurchaseNameInputField);
                     editText.getText().clear();
                     editText.clearFocus();
                 }else{
