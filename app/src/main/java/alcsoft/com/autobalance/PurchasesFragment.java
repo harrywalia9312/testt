@@ -83,29 +83,42 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
                 if(editText.getText().toString().isEmpty()){
                     // Returns a message that field is empty
                     Toast.makeText(getActivity(),"Please enter a purchase amount.",Toast.LENGTH_SHORT).show();
+                    // Clears edit text and focus.
+                    editText.getText().clear();
+                    editText.clearFocus();
                 }else{
-                    String temp;
-                    String date;
-                    float tempfl;
+                    // Checks if number is inbounds
+                    if(Float.valueOf(editText.getText().toString())>= 99999999.99f){
+                        // Handles the exception... seriously you cant afford it.
+                        Toast.makeText(getActivity(),"You and I both know you can't afford this...",Toast.LENGTH_LONG).show();
+                        // Clears edit text and focus.
+                        editText.getText().clear();
+                        editText.clearFocus();
+                    }else{
+                        // Proceeds normally.
+                        String temp;
+                        String date;
+                        float tempfl;
 
-                    tempfl = Float.valueOf(editText.getText().toString());
-                    editText.clearFocus();
-                    editText.getText().clear();
+                        tempfl = Float.valueOf(editText.getText().toString());
+                        editText.clearFocus();
+                        editText.getText().clear();
 
-                    // Gets the name of the purchase list item
-                    editText = (EditText) view.findViewById(R.id.PL_PurchaseNameInputField);
-                    temp = editText.getText().toString();
-                    // Gets the current date and saves it to a string
-                    Calendar c = Calendar.getInstance();
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yy");
-                    date = simpleDateFormat.format(c.getTime());
-                    // Sends to list
-                    MainActivity.purchaseHandler.addPurchase(temp,date,tempfl);
-                    editText.clearFocus();
-                    editText.getText().clear();
-                    listAdapter.notifyDataSetChanged();
-                    updateStatus();
-                    Toast.makeText(getActivity(),"Purchase Added!",Toast.LENGTH_SHORT).show();
+                        // Gets the name of the purchase list item
+                        editText = (EditText) view.findViewById(R.id.PL_PurchaseNameInputField);
+                        temp = editText.getText().toString();
+                        // Gets the current date and saves it to a string
+                        Calendar c = Calendar.getInstance();
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yy");
+                        date = simpleDateFormat.format(c.getTime());
+                        // Sends to list
+                        MainActivity.purchaseHandler.addPurchase(temp,date,tempfl);
+                        editText.clearFocus();
+                        editText.getText().clear();
+                        listAdapter.notifyDataSetChanged();
+                        updateStatus();
+                        Toast.makeText(getActivity(),"Purchase Added!",Toast.LENGTH_SHORT).show();
+                    }
                 }
                 break;
             case R.id.PL_RemoveLastPurchaseButton:
