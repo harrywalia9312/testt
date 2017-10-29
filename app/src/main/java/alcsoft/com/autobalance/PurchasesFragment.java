@@ -49,14 +49,15 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
         // Calls the initialization method
         initializeStatus();
 
-        final Button resetPurchaseListButton = (Button) view.findViewById(R.id.PL_ResetListButton);
-        resetPurchaseListButton.setOnClickListener(this);
+        // Button Onclick Listeners (RemoveLastPurchase)
         final Button removeLastTransaction = (Button) view.findViewById(R.id.PL_RemoveLastPurchaseButton);
         removeLastTransaction.setOnClickListener(this);
+
+        // EditTexts initialized. (Purchase Name and Purchase Amount.
         PurchaseNameEdit = (EditText) view.findViewById(R.id.PL_PurchaseNameInputField);
         PurchaseAmtEdit = (EditText) view.findViewById(R.id.PL_PurchaseAmountInputField);
 
-        // Sets OnActionListeners for Input Fields
+        // Sets listeners for keyboard "Done and Next" for proper handling.
         PurchaseNameEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -67,7 +68,6 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
                 return false;
             }
         });
-
         PurchaseAmtEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -127,7 +127,7 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
             case R.id.action_PLSettings:
                 // Builds alert dialog and shows it.
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Remove All Purchases");
+                builder.setTitle("Reset Purchase List");
                 builder.setMessage("This will remove all purchases from the list. Are you Sure?");
                 builder.setPositiveButton("Yes", dialogClickListener);
                 builder.setNegativeButton("No",dialogClickListener);
