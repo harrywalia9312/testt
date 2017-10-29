@@ -77,14 +77,12 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
             case R.id.PL_AddPurchaseToList:
                 // Calls method to close keyboard.
                 MainActivity.hidekeyboard(this.getContext());
-
+                // Assigns the EditText PurchaseAmountInputField
                 EditText editText = (EditText) view.findViewById(R.id.PL_PurchaseAmountInputField);
-                System.out.print("Before IF");
-                System.out.print(editText.getText().toString().isEmpty());
+                // Checks if the input field is empty
                 if(editText.getText().toString().isEmpty()){
-
-                    Toast.makeText(getActivity(),"Please Enter the purchase amount.",Toast.LENGTH_SHORT).show();
-
+                    // Returns a message that field is empty
+                    Toast.makeText(getActivity(),"Please enter a purchase amount.",Toast.LENGTH_SHORT).show();
                 }else{
                     String temp;
                     String date;
@@ -108,9 +106,7 @@ public class PurchasesFragment extends Fragment implements View.OnClickListener 
                     listAdapter.notifyDataSetChanged();
                     updateStatus();
                     Toast.makeText(getActivity(),"Purchase Added!",Toast.LENGTH_SHORT).show();
-
                 }
-
                 break;
             case R.id.PL_RemoveLastPurchaseButton:
                 MainActivity.purchaseHandler.removeLastTransaction();
