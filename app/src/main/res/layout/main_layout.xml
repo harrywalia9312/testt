@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1c2033">
 
         <TextView
             android:id="@+id/textView4"
@@ -9,6 +12,7 @@
             android:layout_marginTop="60dp"
             android:text="@string/TopText1"
             android:textAlignment="center"
+            android:textColor="#ffffff"
             android:textSize="20sp" />
 
         <TextView
@@ -19,6 +23,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/textView4"
             android:text="$ Empty"
+            android:textColor="#ffffff"
             android:textAlignment="center"
             android:textSize="25sp" />
 
@@ -27,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:textColor="#ffffff"
             android:text="@string/TopText2"
             android:layout_below="@id/Main_SpendingAmount"
             android:textAlignment="center"
@@ -38,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textView5"
             android:layout_marginTop="30dp"
+            android:textColor="#ffffff"
             android:text="@string/BottomText1"
             android:textAlignment="center"
             android:textSize="18sp" />
@@ -46,7 +53,9 @@
             android:id="@+id/Main_PurchaseTotalAmt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#ffffff"
             android:layout_marginTop="5dp"
+            android:layout_alignParentBottom="true"
             android:text="$ Empty"
             android:layout_below="@id/textView6"
             android:textAlignment="center"

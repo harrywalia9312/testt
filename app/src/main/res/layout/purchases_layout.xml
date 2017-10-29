@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1c2033"
     android:orientation="vertical"
     android:focusable="true"
     android:focusableInTouchMode="true"
@@ -16,7 +17,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:textColorHint="#505050"
         android:layout_marginLeft="2dp"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"
         android:hint="@string/PurchaseInputText1"
         android:imeOptions="actionNext"
         android:inputType="text|textCapWords|textNoSuggestions"
@@ -29,6 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:textColorHint="#505050"
+        android:textColor="#ffffff"
+        android:backgroundTint="#ffffff"
         android:layout_marginLeft="2dp"
         android:layout_below="@id/PL_PurchaseNameInputField"
         android:hint="@string/PurchaseInputText2"
@@ -41,6 +48,7 @@
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#ffffff"
         android:layout_below="@id/PL_PurchaseAmountInputField"
         android:text="@string/PurchaseListText1"
         android:textAlignment="center" />
@@ -50,6 +58,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView9"
+        android:background="#27304b"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
         android:layout_above="@id/textView14"
         android:scrollbars="horizontal" />
 
@@ -57,6 +68,7 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#ffffff"
         android:layout_above="@id/PL_RemoveLastPurchaseButton"
         android:layout_marginTop="5dp"
         android:layout_alignParentLeft="true"
@@ -67,6 +79,7 @@
         android:id="@+id/PL_PurchaseTotalAmt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#ffffff"
         android:layout_above="@id/PL_RemoveLastPurchaseButton"
         android:layout_toRightOf="@id/textView14"
         android:layout_alignParentRight="true"
@@ -84,9 +97,11 @@
         android:id="@+id/PL_ResetListButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
-        android:text="@string/RemoveAllPurchasesButtonText" />
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="@string/RemoveAllPurchasesButtonText"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>
