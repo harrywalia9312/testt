@@ -7,33 +7,52 @@ package alcsoft.com.autobalance.internal;
  * Accessors return the values and their appropriate datatypes with the exception of the purchase amount, it returns
  * a float and a string value.
  *
- * Created by ALCRamirez94 on 8/16/2017. Revised 10/27/2017
- * Ver 1.1
+ * Created by ALCRamirez94 on 8/16/2017. Revised 11/2/2017
+ * Ver 2.0
  */
 
-public class Purchase {
-    private String PName;
-    private String PDate;
-    private float PAmt;
+class Purchase {
+    // Declared Private Variables
+    private String PurchaseName;
+    private String PurchaseDate;
+    private float PurchaseAmt;
 
-    public Purchase(String namein, String datein, float amtin){
-        PName = namein;
-        PDate = datein;
-        PAmt = amtin;
+    // Constructor
+    public Purchase(String name, String date, float amt){
+        PurchaseName = name;
+        PurchaseDate = date;
+        PurchaseAmt = amt;
     }
 
-    public String getPname(){
-        return PName;
+    // Mutators
+    // Sets the PurchaseName to parameter
+    public void setPurchaseName(String name){
+        PurchaseName = name;
     }
 
-    public String getPDate(){
-        return PDate;
+    // Sets the PurchaseAmt to parameter
+    public void setPurchaseAmt(Float amt){
+        PurchaseAmt = amt;
     }
 
-    public String getPAmtString(){
-        return String.format(java.util.Locale.US,"%.2f",PAmt);
+    // Sets the PurchaseDate to Parameter
+    public void setPurchaseDate(String date){
+        PurchaseDate = date;
     }
-    public float getPAmt(){
-        return PAmt;
+
+    // Accessors
+    // Returns the String PurchaseName
+    public String getPurchaseName(){
+        return PurchaseName;
+    }
+
+    // Returns the String PurchaseDate
+    public String getPurchaseDate(){
+        return PurchaseDate;
+    }
+
+    // Returns the Float PurchaseAmt
+    public float getPurchaseAmt(){
+        return PurchaseAmt;
     }
 }
