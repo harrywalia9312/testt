@@ -129,10 +129,6 @@ public class PurchaseHandler {
         return TotalPurchaseAmt;
     }
 
-    public String getTotalPAmtString(){
-        return String.format(java.util.Locale.US,"%.2f",TotalPurchaseAmt);
-    }
-
     public int getTop(){
         return Top;
     }
