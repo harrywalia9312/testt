@@ -115,7 +115,7 @@ public class PurchaseHandler {
         }
     }
 
-    // ArrayList Accessors
+    // Accessors
     public String getDataToSave(){
         Gson gson = new Gson();
         return gson.toJson(PurchaseList);
