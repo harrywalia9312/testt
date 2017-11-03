@@ -1,7 +1,7 @@
 package alcsoft.com.autobalance.internal;
 
 /**
- *  Purchase Object
+ * Purchase Object
  * This object models the Purchase information of a Purchase.
  * @author ALCRamirez94
  * @version 2.0 (11/2/2017)
