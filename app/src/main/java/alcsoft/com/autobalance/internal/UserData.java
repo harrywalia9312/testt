@@ -4,12 +4,9 @@ import com.google.gson.Gson;
 
 /**
  * UserData Object
- * This object models the User defined values for a
+ * This object models the user's monthly income, expenses and net income information.
  * @author ALCRamirez94
- * @version 2.0
- * Created on 8/16/2017, Revised on : 11/3/2017
- * This object stores the user defined values
- *  Monthly Income value (Float), Monthly Expenses value (Float), Monthly Net Income (Float)
+ * @version 2.0 (11/3/2017)
  */
 
 public class UserData {
@@ -54,9 +51,7 @@ public class UserData {
     /**
      *  Updates the UserMonthlyNetIncome using the subtraction of UserMonthlyIncome and UserMonthlyExpenses.
      */
-    // Mutators
     private void updateUserMoNetIncome(){
-        // Updates the user income
         UserMonthlyNetIncome = UserMonthlyIncome - UserMonthlyExpenses;
     }
 
