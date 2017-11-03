@@ -2,57 +2,83 @@ package alcsoft.com.autobalance.internal;
 
 /**
  *  Purchase Object
- *
- * This object holds the purchase name (String), the purchase date (String), and the purchase amount (Float)
- * Accessors return the values and their appropriate datatypes with the exception of the purchase amount, it returns
- * a float and a string value.
- *
- * Created by ALCRamirez94 on 8/16/2017. Revised 11/2/2017
- * Ver 2.0
+ * This object models the Purchase information of a Purchase.
+ * @author ALCRamirez94
+ * @version 2.0 (11/2/2017)
  */
 
 class Purchase {
-    // Declared Private Variables
+    /**
+     * The name of the purchase
+     */
     private String PurchaseName;
+    /**
+     * The date of the purchase
+     */
     private String PurchaseDate;
+    /**
+     * The amount of the purchase
+     */
     private float PurchaseAmt;
 
-    // Constructor
+    /**
+     * Constructs the object using the parameters to define it.
+     * @param name  the name of the purchase
+     * @param date  the date of the purchase
+     * @param amt  the amount of the purchase
+     */
     public Purchase(String name, String date, float amt){
+        this.PurchaseName = name;
+        this.PurchaseDate = date;
+        this.PurchaseAmt = amt;
+    }
+
+
+    /**
+     * Sets the PurchaseName to the defined parameter.
+     * @param name  the new name of the purchase
+     */
+    void setPurchaseName(String name){
         PurchaseName = name;
-        PurchaseDate = date;
+    }
+
+    /**
+     * Sets the PurchaseAmount to the defined parameter.
+     * @param amt  the new amount of the purchase
+     */
+    void setPurchaseAmt(Float amt){
         PurchaseAmt = amt;
     }
 
-    // Mutators
-    // Sets the PurchaseName to parameter
-    public void setPurchaseName(String name){
-        PurchaseName = name;
-    }
-
-    // Sets the PurchaseAmt to parameter
-    public void setPurchaseAmt(Float amt){
-        PurchaseAmt = amt;
-    }
-
-    // Sets the PurchaseDate to Parameter
-    public void setPurchaseDate(String date){
+    /**
+     * Sets the PurchaseDate to the defined parameter.
+     * @param date  the new date of the purchase
+     */
+    void setPurchaseDate(String date){
         PurchaseDate = date;
     }
 
-    // Accessors
-    // Returns the String PurchaseName
-    public String getPurchaseName(){
+    /**
+     * Gets the Purchase Name
+     * @return PurchaseName  the name of the purchase
+     */
+    String getPurchaseName(){
         return PurchaseName;
     }
 
-    // Returns the String PurchaseDate
-    public String getPurchaseDate(){
+    /**
+     * Gets the Purchase Date
+     * @return PurchaseDate  the date of the purchase
+     */
+    String getPurchaseDate(){
         return PurchaseDate;
     }
 
-    // Returns the Float PurchaseAmt
-    public float getPurchaseAmt(){
+    /**
+     * Gets the Purchase Amount
+     * @return PurchaseAmt  the amount of the purchase
+     */
+    float getPurchaseAmt(){
         return PurchaseAmt;
     }
 }
