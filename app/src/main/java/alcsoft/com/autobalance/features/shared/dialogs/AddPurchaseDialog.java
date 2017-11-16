@@ -101,8 +101,6 @@ public class AddPurchaseDialog extends DialogFragment implements DialogInterface
 
             case BUTTON_NEGATIVE:
                 // DO nothing
-                Toast.makeText(getActivity(), R.string.PurchaseCancelAction, Toast.LENGTH_SHORT).show();
-
                 break;
         }
     }
