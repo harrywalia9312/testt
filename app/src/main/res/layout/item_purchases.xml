@@ -10,9 +10,13 @@
         android:id="@+id/item_purchaseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00/00/0000"
+        android:layout_alignParentLeft="true"
         android:textColor="#ffffff"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical|center_horizontal"
         android:background="#3b4563"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -21,12 +25,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#3b4563"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:layout_toRightOf="@id/item_purchaseDate"
         android:layout_toLeftOf="@id/item_purchaseAmount"
         android:textColor="#ffffff"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
-        android:text="Name"
         android:textSize="20sp" />
 
     <TextView
@@ -34,8 +40,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="5dp"
         android:background="#3b4563"
         android:layout_alignParentRight="true"
-        android:text="$0000.00"
         android:textSize="20sp" />
 </RelativeLayout>

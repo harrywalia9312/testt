@@ -3,7 +3,7 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_main_layout"
+            android:id="@+id/nav_quickinfo_layout"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="@string/MenuOption1" />
         <item
@@ -13,7 +13,7 @@
         <item
             android:id="@+id/nav_options_layout"
             android:icon="@drawable/ic_menu_manage"
-            android:title="@string/MenuOption4" />
+            android:title="@string/MenuOption3" />
     </group>
 
 </menu>

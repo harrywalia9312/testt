@@ -6,59 +6,80 @@
     android:background="#1c2033">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/QF_TopTextTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="35dp"
             android:text="@string/TopText1"
             android:textAlignment="center"
+            android:layout_centerHorizontal="true"
             android:textColor="#ffffff"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/Main_SpendingAmount"
+            android:id="@+id/QF_SpendingAmountAvailText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/textView4"
-            android:text="$ Empty"
+            android:layout_below="@id/QF_TopTextTitle"
             android:textColor="#ffffff"
             android:textAlignment="center"
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/QF_TopTextSubtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textColor="#ffffff"
             android:text="@string/TopText2"
-            android:layout_below="@id/Main_SpendingAmount"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/QF_SpendingAmountAvailText"
             android:textAlignment="center"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/QF_MiddleTextTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView5"
+            android:layout_below="@id/QF_TopTextSubtitle"
             android:layout_marginTop="30dp"
             android:textColor="#ffffff"
-            android:text="@string/BottomText1"
+            android:layout_centerHorizontal="true"
+            android:text="@string/MiddleText"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/Main_PurchaseTotalAmt"
+            android:id="@+id/QF_PurchaseTotalAmtText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:layout_marginTop="5dp"
-            android:layout_alignParentBottom="true"
-            android:text="$ Empty"
-            android:layout_below="@id/textView6"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/QF_MiddleTextTitle"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:paddingBottom="20dp"
+            android:textSize="18sp" />
 
+    <TextView
+        android:id="@+id/QF_BottomTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/QF_PurchaseTotalAmtText"
+        android:text="@string/BottomTitleText1" />
+
+    <ListView
+        android:id="@+id/QF_RecentPurchasesList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="#27304b"
+        android:layout_below="@id/QF_BottomTitleText" />
 </RelativeLayout>

@@ -1,42 +1,75 @@
 <resources>
     <string name="app_name">AutoBalance</string>
-    <string name="app_ver">Version 1.1</string>
+    <string name="app_ver">Version 2.0</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- Action_Bar menu names-->
+    <string name="action_PLAddPurchase">Add Purchase</string>
     <string name="action_PLSettings">Reset Purchase List</string>
     <string name="action_OPSettings">Reset Values</string>
 
     <!-- Main_Drawer menu names-->
     <string name="MenuOption1">Available Balance</string>
     <string name="MenuOption2">Manage Purchases</string>
-    <string name="MenuOption3">Affordability Checker</string>
-    <string name="MenuOption4">Setup Balance</string>
+    <string name="MenuOption3">Setup Balance</string>
 
     <!--  Main Layout -->
     <string name="TopText1">You currently have</string>
     <string name="TopText2">to spend.</string>
-    <string name="BottomText1">Your total amount spent on purchases is</string>
+    <string name="MiddleText">Your total amount spent on purchases is</string>
+    <string name="BottomTitleText1">Most Recent Purchases</string>
+    <string name="QuickAddPurchaseDialogTitle">Quick Add Purchase</string>
 
     <!-- Purchase List -->
     <string name="PurchaseInputText1">Purchase Name</string>
     <string name="PurchaseInputText2">Purchase Amount</string>
-    <string name="PurchaseListText1">List of Purchases (Most Recent)</string>
+    <string name="PurchaseListText1">Tap and hold a purchase for more options</string>
     <string name="PurchaseListText2">Total Amount spent on purchases :</string>
     <string name="RemoveLastPurchaseButtonText">Remove Last Purchase</string>
     <string name="RemoveAllPurchasesButtonText">Remove All Purchases</string>
+    <string name="PurchaseCancelAction">Nothing was changed!</string>
+    <string name="PurchaseRemoveActionSuccess">Purchase was removed!</string>
+    <string name="PurchaseListResetSuccess">All Purchases were removed!</string>
+    <string name="PurchaseEditSuccess">Purchase info updated!</string>
+    <string name="PurchaseAddSuccess">Purchase Added!</string>
 
     <!-- Options Layout -->
-    <string name="OptionsTopText1">Current Saved Settings</string>
-    <string name="OptionsIncomeText1">Income</string>
-    <string name="OptionsDeductionsText1">Deductions</string>
-    <string name="OptionsNetIncomeText1">Net Income</string>
-    <string name="OptionsInputIncomeTitleText">Setup Income and Deductions</string>
-    <string name="OptionsIncomeInputText">Income</string>
-    <string name="OptionsDeductionsInputText">Deductions</string>
-    <string name="OptionsIncomeTooltip">Income - Use the income amount calculated after taxes. Refer to your paycheck for more information</string>
-    <string name="OptionsDeductionsTooltip">Deductions - Be as accurate as you can be with this value, this is the average value of monthly fixed bills. (eg. fixed payments, etc)</string>
-    <string name="OptionsSaveButtonText">Save</string>
+    <string name="OptionsTopText1">Tap on the values to edit them</string>
+    <string name="OptionsIncomeText1">Monthly Income</string>
+    <string name="OptionsDeductionsText1">Monthly Expenses</string>
+    <string name="OptionsNetIncomeText1">Your calculated Monthly Net Income</string>
+    <string name="OptionsIncomeInputText">Monthly Income</string>
+    <string name="OptionsExpensesInputText">Monthly Expenses</string>
+    <string name="OptionsIncomeTooltip">Monthly Income - These are the monthly income amount calculated after taxes. Refer to your paycheck for more information.</string>
+    <string name="OptionsExpensesTooltip">Monthly Expenses - These are your monthly fixed expenses (eg. fixed payments, etc).</string>
+    <string name="OptionsResetSuccess">User values reset!</string>
+
+    <!-- Dialog Texts -->
+    <string name="PurchaseConfirmDeleteTitle">Delete Purchase</string>
+    <string name="PurchaseConfirmDeleteMessage">Are you sure?</string>
+    <string name="PurchaseConfirmResetTitle">Reset List</string>
+    <string name="PurchaseConfirmResetMessage">This will remove all purchases, are you sure?</string>
+    <string name="ConfirmDialogYesText">Yes</string>
+    <string name="ConfirmDialogNoText">No</string>
+    <string name="EditPurchaseDialogDateHint">MM/DD/YYYY</string>
+
+    <!-- Error Handling Messages -->
+    <string name="ErrorLevel1">Quit lying, nobody makes that kind of money.</string>
+    <string name="ErrorLevel2">I don\'t think you\'ll ever have any money to spend if you pay THAT MUCH each month.</string>
+    <string name="ErrorLevel3">I\'m not going to calculate that. Please use realistic values.</string>
+    <string name="ErrorLevel4">You and I both know that you can\'t afford that.</string>
+    <string name="ErrorLevel5">Please enter the purchase amount.</string>
+    <string name="ErrorLevel6">The new purchase amount is invalid.</string>
+    <string name="title_activity_first_run">FirstRunActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- First Run Layouts-->
+    <string name="FirstRunIntroTitle">Welcome to AutoBalance</string>
+    <string name="FirstRunIntroSubTitle">Let\'s setup your values to use in the app!</string>
+    <string name="FirstRunSetupIncomeTitle">Please provide your monthly income.</string>
+    <string name="FirstRunSetupIncomeSubTitle">For accurate results please use the monthly income after taxes. (Refer to your paycheck for more information)</string>
+
 </resources>

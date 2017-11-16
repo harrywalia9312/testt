@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/dialog_editpurchasedateinput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="MM/DD/YYYY"
+        android:clickable="true"
+        android:focusable="false"
+        android:textIsSelectable="true"
+        android:inputType="none"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/dialog_editpurchasenameinput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:maxLength="18"
+        android:inputType="textCapWords"
+        android:hint="@string/PurchaseInputText1"
+        android:layout_below="@id/dialog_editpurchasedateinput" />
+
+    <EditText
+        android:id="@+id/dialog_editpurchaseamtinput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:maxLength="9"
+        android:textAlignment="center"
+        android:layout_below="@id/dialog_editpurchasenameinput"
+        android:hint="@string/PurchaseInputText2" />
+</RelativeLayout>

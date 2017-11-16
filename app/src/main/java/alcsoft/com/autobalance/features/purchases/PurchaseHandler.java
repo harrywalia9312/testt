@@ -1,9 +1,12 @@
-package alcsoft.com.autobalance.internal;
+package alcsoft.com.autobalance.features.purchases;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 
 /**
  * PurchaseHandler Object
@@ -17,7 +20,7 @@ public class PurchaseHandler {
     /**
      * ArrayList to store Purchase Objects
      */
-    private ArrayList<Purchase> PurchaseList;
+    private final ArrayList<Purchase> PurchaseList;
     /**
      * The total accumulation of all PurchaseAmt from Purchase Objects stored in the list
      */
@@ -26,7 +29,6 @@ public class PurchaseHandler {
      * The index value of the top item on the arrayList.
      */
     private int Top;
-
 
     /**
      * Constructs the object based on the parameter given, uses default values if
@@ -64,7 +66,7 @@ public class PurchaseHandler {
      * @param date  the date of the purchase
      * @param amt  the amount of the purchase
      */
-    public void addPurchase(String name, String date, float amt){
+    public void addPurchase(String name, Date date, float amt) {
         // Adds the top value by 1
         Top = Top + 1;
         // Overflow check
@@ -80,17 +82,18 @@ public class PurchaseHandler {
         Purchase purchase = new Purchase(name,date,amt);
         // Adds it to the top list
         PurchaseList.add(0,purchase);
+        sortList();
     }
 
     /**
      * Gets the Purchase object at a specified position on the list, edits ONLY the
      * non-empty values passed as the parameter.
      * @param position  the index value of the targeted object for modification
-     * @param name  the new purchase name for the object
-     * @param amt  the new purchase amount for the object
      * @param date  the new purchase date for the object
+     * @param name  the new purchase name for the object
+     * @param amt   the new purchase amount for the object
      */
-    public void editPurchaseAt(int position, String name, float amt, String date){
+    public void editPurchaseAt(int position, Date date, String name, Float amt) {
         // Edits purchase at position, only values that are not empty gets edited.
         // Gets the purchase object from the list at position
         Purchase purchase = PurchaseList.get(position);
@@ -101,14 +104,19 @@ public class PurchaseHandler {
 
         // Checks if float is -1
         // Updates the amount on the object
-        if (amt != -1.00f) purchase.setPurchaseAmt(amt);
+        if (amt != -1.00f) {
+            TotalPurchaseAmt = TotalPurchaseAmt - purchase.getPurchaseAmt();
+            purchase.setPurchaseAmt(amt);
+            TotalPurchaseAmt = TotalPurchaseAmt + amt;
+        }
 
         // Checks if date is empty
         // Updates the date on the object
-        if (!date.isEmpty()) purchase.setPurchaseDate(date);
+        if (date != null) purchase.setPurchaseDate(date);
 
         // Replaces the object at the position with the updated information.
         PurchaseList.set(position,purchase);
+        sortList();
     }
 
     /**
@@ -126,6 +134,7 @@ public class PurchaseHandler {
         TotalPurchaseAmt = TotalPurchaseAmt - purchase.getPurchaseAmt();
         // Removes it from the list.
         PurchaseList.remove(position);
+        sortList();
     }
 
     /**
@@ -140,24 +149,6 @@ public class PurchaseHandler {
     }
 
     /**
-     * Removes the most recent purchase object from the list and updates the
-     * top and net income values
-     */
-    public void removeLastTransaction(){
-        // Underflow Check
-        if (Top != 0) {
-            // Subtract the Top value by 1
-            Top = Top - 1;
-            // Pulls the Object into a temp object
-            Purchase purchase = PurchaseList.get(0);
-            // Subtracts the purchase amt from the total
-            TotalPurchaseAmt = TotalPurchaseAmt - purchase.getPurchaseAmt();
-            // Removes the purchase object from the ArrayList
-            PurchaseList.remove(0);
-        }
-    }
-
-    /**
      * Gets the ArrayList as a JSON formatted string
      * @return json  a json formatted string of the arrayList
      */
@@ -167,11 +158,33 @@ public class PurchaseHandler {
     }
 
     /**
+     * Gets the Purchase Date, Name, and Amt from a specified purchase from PurchaseList
+     *
+     * @param position the position of the item in the arrayList
+     * @return temp  the purchase date, name, amt
+     */
+    public Purchase getPurchaseInfoAt(int position) {
+        return PurchaseList.get(position);
+    }
+
+    /**
      * Gets the ArrayList.
      * @return PurchaseList  the arrayList that stores the Purchase Objects
      */
     public ArrayList<Purchase> getPurchaseList(){
         return PurchaseList;
+    }
+
+    /**
+     * Sorts the ArrayList from most recent date
+     */
+    private void sortList() {
+        Collections.sort(PurchaseList, new Comparator<Purchase>() {
+            @Override
+            public int compare(Purchase o1, Purchase o2) {
+                return o2.getPurchaseDate().compareTo(o1.getPurchaseDate());
+            }
+        });
     }
 
     /**
@@ -189,4 +202,5 @@ public class PurchaseHandler {
     public int getTop(){
         return Top;
     }
+
 }

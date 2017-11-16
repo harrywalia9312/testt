@@ -1,4 +1,4 @@
-package alcsoft.com.autobalance.internal;
+package alcsoft.com.autobalance.features.options;
 
 import com.google.gson.Gson;
 
@@ -115,3 +115,4 @@ public class UserData {
         return gson.toJson(this);
     }
 }
+

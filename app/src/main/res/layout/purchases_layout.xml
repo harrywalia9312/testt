@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1c2033"
@@ -10,46 +9,13 @@
     android:focusableInTouchMode="true"
     >
 
-    <EditText
-        android:id="@+id/PL_PurchaseNameInputField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:textColorHint="#505050"
-        android:layout_marginLeft="2dp"
-        android:textColor="#ffffff"
-        android:backgroundTint="#ffffff"
-        android:hint="@string/PurchaseInputText1"
-        android:imeOptions="actionNext"
-        android:inputType="text|textCapWords|textNoSuggestions"
-        android:singleLine="true"
-        android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/PL_PurchaseAmountInputField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:textColorHint="#505050"
-        android:textColor="#ffffff"
-        android:backgroundTint="#ffffff"
-        android:layout_marginLeft="2dp"
-        android:layout_below="@id/PL_PurchaseNameInputField"
-        android:hint="@string/PurchaseInputText2"
-        android:imeOptions="actionDone"
-        android:inputType="numberDecimal"
-        android:singleLine="true"
-        android:textSize="20sp" />
-
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/PL_TopTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:layout_below="@id/PL_PurchaseAmountInputField"
+        android:layout_alignParentTop="true"
+        android:paddingTop="10dp"
         android:text="@string/PurchaseListText1"
         android:textAlignment="center" />
 
@@ -57,40 +23,34 @@
         android:id="@+id/PL_PurchaseList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView9"
+        android:layout_below="@id/PL_TopTitle"
         android:background="#27304b"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
-        android:layout_above="@id/textView14"
+        android:layout_above="@id/PL_BottomTitle"
         android:scrollbars="horizontal" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/PL_BottomTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:layout_above="@id/PL_RemoveLastPurchaseButton"
         android:layout_marginTop="5dp"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
-        android:text="@string/PurchaseListText2" />
+        android:text="@string/PurchaseListText2"
+        android:paddingBottom="10dp" />
 
     <TextView
-        android:id="@+id/PL_PurchaseTotalAmt"
+        android:id="@+id/PL_TotalPurchaseAmtText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:layout_above="@id/PL_RemoveLastPurchaseButton"
-        android:layout_toRightOf="@id/textView14"
+        android:layout_toRightOf="@id/PL_BottomTitle"
         android:layout_alignParentRight="true"
-        android:text="$ 0000.00"
-        android:textAlignment="center"/>
-
-    <Button
-        android:id="@+id/PL_RemoveLastPurchaseButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:text="@string/RemoveLastPurchaseButtonText" />
+        android:textAlignment="center"
+        android:paddingBottom="10dp" />
+
 </RelativeLayout>

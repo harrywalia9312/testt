@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="#27304b"
-    tools:context="alcsoft.com.autobalance.MainActivity"
+    tools:context="alcsoft.com.autobalance.app.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <FrameLayout
@@ -15,6 +15,6 @@
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp"
-        tools:ignore="MissingConstraints"></FrameLayout>
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

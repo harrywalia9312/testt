@@ -1,4 +1,6 @@
-package alcsoft.com.autobalance.internal;
+package alcsoft.com.autobalance.features.purchases;
+
+import java.util.Date;
 
 /**
  * Purchase Object
@@ -7,7 +9,7 @@ package alcsoft.com.autobalance.internal;
  * @version 2.0 (11/2/2017)
  */
 
-class Purchase {
+public class Purchase {
     /**
      * The name of the purchase
      */
@@ -15,7 +17,7 @@ class Purchase {
     /**
      * The date of the purchase
      */
-    private String PurchaseDate;
+    private Date PurchaseDate;
     /**
      * The amount of the purchase
      */
@@ -27,7 +29,7 @@ class Purchase {
      * @param date  the date of the purchase
      * @param amt  the amount of the purchase
      */
-    public Purchase(String name, String date, float amt){
+    public Purchase(String name, Date date, float amt) {
         this.PurchaseName = name;
         this.PurchaseDate = date;
         this.PurchaseAmt = amt;
@@ -54,7 +56,7 @@ class Purchase {
      * Sets the PurchaseDate to the defined parameter.
      * @param date  the new date of the purchase
      */
-    void setPurchaseDate(String date){
+    void setPurchaseDate(Date date) {
         PurchaseDate = date;
     }
 
@@ -62,7 +64,7 @@ class Purchase {
      * Gets the Purchase Name
      * @return PurchaseName  the name of the purchase
      */
-    String getPurchaseName(){
+    public String getPurchaseName() {
         return PurchaseName;
     }
 
@@ -70,7 +72,7 @@ class Purchase {
      * Gets the Purchase Date
      * @return PurchaseDate  the date of the purchase
      */
-    String getPurchaseDate(){
+    public Date getPurchaseDate() {
         return PurchaseDate;
     }
 
@@ -78,7 +80,7 @@ class Purchase {
      * Gets the Purchase Amount
      * @return PurchaseAmt  the amount of the purchase
      */
-    float getPurchaseAmt(){
+    public float getPurchaseAmt() {
         return PurchaseAmt;
     }
 }

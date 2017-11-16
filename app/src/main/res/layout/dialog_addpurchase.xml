@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/dialog_purchasenameinput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:maxLength="18"
+        android:inputType="textCapWords"
+        android:hint="@string/PurchaseInputText1" />
+
+    <EditText
+        android:id="@+id/dialog_purchaseamtinput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:maxLength="9"
+        android:layout_below="@id/dialog_purchasenameinput"
+        android:hint="@string/PurchaseInputText2" />
+</RelativeLayout>
