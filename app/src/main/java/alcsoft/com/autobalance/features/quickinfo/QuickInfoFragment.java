@@ -93,11 +93,11 @@ public class QuickInfoFragment extends Fragment implements AdapterView.OnItemCli
         String temp;
         // Sets the TextViews to match the values
         TextView spendingAmtText = (TextView) view.findViewById(R.id.QF_SpendingAmountAvailText);
-        temp = "$ " + mainDataInterface.getCurrentAmtAvail();
+        temp = mainDataInterface.getCurrentAmtAvail();
         spendingAmtText.setText(temp);
 
-        if (Float.valueOf(mainDataInterface.getCurrentIncome()) != 0.00f) {
-            float compare = Math.round(Float.valueOf(mainDataInterface.getCurrentPurchaseAmtTotal()) / Float.valueOf(mainDataInterface.getCurrentNetIncome()) * 100);
+        if (mainDataInterface.getRawCurrentIncome() != 0.00f) {
+            float compare = Math.round(mainDataInterface.getRawCurrentPurchaseAmtTotal() / mainDataInterface.getRawCurrentNetIncome() * 100);
             System.out.println(compare);
 
             if (compare >= 100) {
@@ -124,7 +124,7 @@ public class QuickInfoFragment extends Fragment implements AdapterView.OnItemCli
 
 
         TextView totalPurchaseAmtText = (TextView) view.findViewById(R.id.QF_PurchaseTotalAmtText);
-        temp = "$ " + mainDataInterface.getCurrentPurchaseAmtTotal();
+        temp = mainDataInterface.getCurrentPurchaseAmtTotal();
         totalPurchaseAmtText.setText(temp);
     }
 

@@ -109,4 +109,10 @@ public interface MainDataInterface {
      * @return the name, date, amount concatenated in a string
      */
     String getPurchaseInfoAt(int position);
+
+    Float getRawCurrentPurchaseAmtTotal();
+
+    Float getRawCurrentIncome();
+
+    Float getRawCurrentNetIncome();
 }

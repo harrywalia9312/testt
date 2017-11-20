@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import alcsoft.com.autobalance.R;
@@ -41,7 +42,8 @@ public class ListAdapter extends ArrayAdapter<Purchase> {
         textView.setText(purchase != null ? purchase.getPurchaseName() : null);
         // Set the amount (string)
         textView = (TextView) convertView.findViewById(R.id.item_purchaseAmount);
-        String temp = String.format(java.util.Locale.US, "%.2f", purchase != null ? purchase.getPurchaseAmt() : 0);
+        NumberFormat in = NumberFormat.getCurrencyInstance();
+        String temp = in.format(purchase != null ? purchase.getPurchaseAmt() : 0);
         textView.setText(temp);
         // Set the Purchase Date
         textView = (TextView) convertView.findViewById(R.id.item_purchaseDate);

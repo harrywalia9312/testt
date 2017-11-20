@@ -17,10 +17,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import alcsoft.com.autobalance.features.shared.interfaces.MainDataInterface;
 import alcsoft.com.autobalance.features.purchases.Purchase;
@@ -98,6 +98,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        getSupportFragmentManager().putFragment(outState, "SavedFragment", getSupportFragmentManager().findFragmentByTag("Fragment"));
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -123,15 +130,15 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_quickinfo_layout) {
             // Handle the main page
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new QuickInfoFragment()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new QuickInfoFragment(), "Fragment").commit();
 
         } else if (id == R.id.nav_options_layout) {
             // Handle Options page
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new OptionsFragment()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new OptionsFragment(), "Fragment").commit();
 
         } else if (id == R.id.nav_purchases_layout) {
             // Handle Transactions page
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new PurchasesFragment()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new PurchasesFragment(), "Fragment").commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -176,19 +183,23 @@ public class MainActivity extends AppCompatActivity
 
     // Accessors
     public String getCurrentIncome() {
-        return String.format(Locale.getDefault(), "%.2f", userData.getUserMonthlyIncome());
+        NumberFormat in = NumberFormat.getCurrencyInstance();
+        return in.format(userData.getUserMonthlyIncome());
     }
 
     public String getCurrentExpenses() {
-        return String.format(Locale.getDefault(), "%.2f", userData.getUserMonthlyExpenses());
+        NumberFormat in = NumberFormat.getCurrencyInstance();
+        return in.format(userData.getUserMonthlyExpenses());
     }
 
     public String getCurrentNetIncome() {
-        return String.format(Locale.getDefault(), "%.2f", userData.getUserMonthlyNetIncome());
+        NumberFormat in = NumberFormat.getCurrencyInstance();
+        return in.format(userData.getUserMonthlyNetIncome());
     }
 
     public String getCurrentAmtAvail() {
-        return String.format(Locale.getDefault(), "%.2f", (userData.getUserMonthlyNetIncome() - purchaseHandler.getTotalPurchaseAmt()));
+        NumberFormat in = NumberFormat.getCurrencyInstance();
+        return in.format(userData.getUserMonthlyNetIncome() - purchaseHandler.getTotalPurchaseAmt());
     }
 
     public ArrayList<Purchase> getCurrentList() {
@@ -196,13 +207,30 @@ public class MainActivity extends AppCompatActivity
     }
 
     public String getCurrentPurchaseAmtTotal() {
-        return String.format(Locale.getDefault(), "%.2f", purchaseHandler.getTotalPurchaseAmt());
+        NumberFormat in = NumberFormat.getCurrencyInstance();
+        return in.format(purchaseHandler.getTotalPurchaseAmt());
     }
 
     public String getPurchaseInfoAt(int position) {
         Purchase purchase = purchaseHandler.getPurchaseInfoAt(position);
         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
-        return df.format(purchase.getPurchaseDate()) + " | " + purchase.getPurchaseName() + " | " + String.format(java.util.Locale.US, "%.2f", purchase.getPurchaseAmt());
+        NumberFormat in = NumberFormat.getCurrencyInstance();
+        return df.format(purchase.getPurchaseDate()) + " | " + purchase.getPurchaseName() + " | " + in.format(purchase.getPurchaseAmt());
+    }
+
+    @Override
+    public Float getRawCurrentPurchaseAmtTotal() {
+        return purchaseHandler.getTotalPurchaseAmt();
+    }
+
+    @Override
+    public Float getRawCurrentIncome() {
+        return userData.getUserMonthlyIncome();
+    }
+
+    @Override
+    public Float getRawCurrentNetIncome() {
+        return userData.getUserMonthlyNetIncome();
     }
 
 }

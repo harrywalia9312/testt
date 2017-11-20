@@ -176,7 +176,7 @@ public class PurchasesFragment extends Fragment implements AdapterView.OnItemLon
 
     private void refreshTextView() {
         TextView textView = (TextView) view.findViewById(R.id.PL_TotalPurchaseAmtText);
-        String temp = "$ " + mainDataInterface.getCurrentPurchaseAmtTotal();
+        String temp = mainDataInterface.getCurrentPurchaseAmtTotal();
         textView.setText(temp);
     }
 
