@@ -2,6 +2,9 @@ package alcsoft.com.autobalance.features.options;
 
 import com.google.gson.Gson;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * UserData Object
  * This object models the user's monthly income, expenses and net income information.
@@ -14,15 +17,15 @@ public class UserData {
     /**
      * The User's Monthly Income
      */
-    private float UserMonthlyIncome;
+    private BigDecimal UserMonthlyIncome;
     /**
      * The User's Monthly Expenses
      */
-    private float UserMonthlyExpenses;
+    private BigDecimal UserMonthlyExpenses;
     /**
      * The User's Monthly Net Income
      */
-    private float UserMonthlyNetIncome;
+    private BigDecimal UserMonthlyNetIncome;
 
     /**
      * Constructs the object based on the parameter given. Uses default values if
@@ -32,10 +35,13 @@ public class UserData {
     public UserData(String userData){
         // Checks if stored data exists
         if(userData.equals("none")){
-            // Use default values 0 and sets the FirstTimeUser flag to true
-            this.UserMonthlyIncome = 0.00f;
-            this.UserMonthlyExpenses = 0.00f;
-            this.UserMonthlyNetIncome = 0.00f;
+            // Use default values 0 and sets the rounding to HALF_EVEN with 2 decimal places
+            this.UserMonthlyIncome = BigDecimal.ZERO;
+            this.UserMonthlyIncome = this.UserMonthlyIncome.setScale(2,RoundingMode.HALF_EVEN);
+            this.UserMonthlyExpenses = BigDecimal.ZERO;
+            this.UserMonthlyExpenses = this.UserMonthlyExpenses.setScale(2,RoundingMode.HALF_EVEN);
+            this.UserMonthlyNetIncome = BigDecimal.ZERO;
+            this.UserMonthlyNetIncome = this.UserMonthlyNetIncome.setScale(2,RoundingMode.HALF_EVEN);
         }else{
             // Loads the value from storage
             Gson gson = new Gson();
@@ -52,14 +58,14 @@ public class UserData {
      *  Updates the UserMonthlyNetIncome using the subtraction of UserMonthlyIncome and UserMonthlyExpenses.
      */
     private void updateUserMoNetIncome(){
-        UserMonthlyNetIncome = UserMonthlyIncome - UserMonthlyExpenses;
+        UserMonthlyNetIncome = UserMonthlyIncome.subtract(UserMonthlyExpenses);
     }
 
     /**
      * Sets the User Monthly Income and calls updateUserMoNetIncome() to update the new values.
      * @param income  the user's monthly income as a float value
      */
-    public void setUserMonthlyIncome(float income){
+    public void setUserMonthlyIncome(BigDecimal income){
         UserMonthlyIncome = income;
         updateUserMoNetIncome();
     }
@@ -68,7 +74,7 @@ public class UserData {
      * Sets the User Monthly Expenses and calls updateUserMoNetIncome() to update the new values.
      * @param expenses  the user's monthly expenses as a float value
      */
-    public void setUserMonthlyExpenses(float expenses){
+    public void setUserMonthlyExpenses(BigDecimal expenses){
         UserMonthlyExpenses = expenses;
         updateUserMoNetIncome();
     }
@@ -78,7 +84,7 @@ public class UserData {
      * @return  UserMonthlyIncome  the user's saved monthly expenses as a float value
      */
     // Accessors
-    public float getUserMonthlyIncome(){
+    public BigDecimal getUserMonthlyIncome(){
         return UserMonthlyIncome;
     }
 
@@ -86,7 +92,7 @@ public class UserData {
      * Gets the float value UserMonthlyExpenses
      * @return  UserMonthlyExpenses  the user's saved monthly expenses as a float value
      */
-    public float getUserMonthlyExpenses(){
+    public BigDecimal getUserMonthlyExpenses(){
         return UserMonthlyExpenses;
     }
 
@@ -94,7 +100,7 @@ public class UserData {
      * Gets the float value UserMonthlyNetIncome
      * @return  UserMonthlyNetIncome  the user's saved monthly net income as a float value
      */
-    public float getUserMonthlyNetIncome(){
+    public BigDecimal getUserMonthlyNetIncome(){
         return UserMonthlyNetIncome;
     }
 
@@ -103,7 +109,7 @@ public class UserData {
      * @return  boolean  a flag used to represent the user's current status
      */
     public boolean isFirstTimeUser(){
-        return UserMonthlyIncome == 0.00f && UserMonthlyExpenses == 0.00f;
+        return UserMonthlyIncome.equals(BigDecimal.ZERO) && UserMonthlyExpenses.equals(BigDecimal.ZERO);
     }
 
     /**

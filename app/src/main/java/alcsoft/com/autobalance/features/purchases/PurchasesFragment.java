@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -125,7 +126,7 @@ public class PurchasesFragment extends Fragment implements AdapterView.OnItemLon
     }
 
     public void onDialogAddPurchase(String name, String amt) {
-        mainDataInterface.onPurchaseAdd(name, Float.valueOf(amt));
+        mainDataInterface.onPurchaseAdd(name, new BigDecimal(amt));
         listAdapter.notifyDataSetChanged();
         refreshTextView();
 
@@ -145,6 +146,7 @@ public class PurchasesFragment extends Fragment implements AdapterView.OnItemLon
 
     public void onPurchaseEdit(String name, String date, String amt) {
         Date date1 = null;
+        BigDecimal temp = new BigDecimal(amt);
         if (!date.isEmpty()) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yy", Locale.getDefault());
             try {
@@ -154,14 +156,14 @@ public class PurchasesFragment extends Fragment implements AdapterView.OnItemLon
             }
         }
         if (!amt.isEmpty()) {
-            if (Float.valueOf(amt) < 9999999.99f) {
-                mainDataInterface.onPurchaseEdit(purchasePosition, date1, name, Float.valueOf(amt));
+            if (temp.compareTo(new BigDecimal(99999999.99)) < 0) {
+                mainDataInterface.onPurchaseEdit(purchasePosition, date1, name, temp);
             } else {
                 Toast.makeText(getActivity(), R.string.ErrorLevel6, Toast.LENGTH_LONG).show();
-                mainDataInterface.onPurchaseEdit(purchasePosition, date1, name, -1.00f);
+                mainDataInterface.onPurchaseEdit(purchasePosition, date1, name, new BigDecimal(-1.00));
             }
         }
-        mainDataInterface.onPurchaseEdit(purchasePosition, date1, name, -1.00f);
+        mainDataInterface.onPurchaseEdit(purchasePosition, date1, name, temp);
         listAdapter.notifyDataSetChanged();
         refreshTextView();
     }

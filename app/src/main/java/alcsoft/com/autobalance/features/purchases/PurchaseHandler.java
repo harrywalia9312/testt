@@ -3,6 +3,8 @@ package alcsoft.com.autobalance.features.purchases;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -24,7 +26,7 @@ public class PurchaseHandler {
     /**
      * The total accumulation of all PurchaseAmt from Purchase Objects stored in the list
      */
-    private float TotalPurchaseAmt;
+    private BigDecimal TotalPurchaseAmt;
     /**
      * The index value of the top item on the arrayList.
      */
@@ -37,12 +39,13 @@ public class PurchaseHandler {
      * @param top  the saved Top value
      * @param amt  the saved TotalPurchaseAmt
      */
-    public PurchaseHandler(String purchaseList, int top, float amt){
+    public PurchaseHandler(String purchaseList, int top, BigDecimal amt){
         // Checks if list exists
         if(purchaseList.equals("none")){
             // Creates an Empty list and uses Default values.
             PurchaseList = new ArrayList<>();
-            TotalPurchaseAmt = 0.00f;
+            TotalPurchaseAmt = BigDecimal.ZERO;
+            TotalPurchaseAmt = this.TotalPurchaseAmt.setScale(2, RoundingMode.HALF_EVEN);
             Top = 0;
         }else{
             // Loads the already existing list from storage
@@ -66,16 +69,16 @@ public class PurchaseHandler {
      * @param date  the date of the purchase
      * @param amt  the amount of the purchase
      */
-    public void addPurchase(String name, Date date, float amt) {
+    public void addPurchase(String name, Date date, BigDecimal amt) {
         // Adds the top value by 1
         Top = Top + 1;
         // Overflow check
-        if(TotalPurchaseAmt+amt >= 99999999.99f){
+        if(TotalPurchaseAmt.add(amt).compareTo(new BigDecimal(99999999.99)) > 0 ){
             // Set to maximum value.
-            TotalPurchaseAmt = 9999999.99f;
+            TotalPurchaseAmt = new BigDecimal(9999999.99);
         }else {
             // Adds the total float value
-            TotalPurchaseAmt = TotalPurchaseAmt + amt;
+            TotalPurchaseAmt = TotalPurchaseAmt.add(amt);
         }
 
         // Creates a new purchase object
@@ -93,7 +96,7 @@ public class PurchaseHandler {
      * @param name  the new purchase name for the object
      * @param amt   the new purchase amount for the object
      */
-    public void editPurchaseAt(int position, Date date, String name, Float amt) {
+    public void editPurchaseAt(int position, Date date, String name, BigDecimal amt) {
         // Edits purchase at position, only values that are not empty gets edited.
         // Gets the purchase object from the list at position
         Purchase purchase = PurchaseList.get(position);
@@ -104,10 +107,10 @@ public class PurchaseHandler {
 
         // Checks if float is -1
         // Updates the amount on the object
-        if (amt != -1.00f) {
-            TotalPurchaseAmt = TotalPurchaseAmt - purchase.getPurchaseAmt();
+        if (amt.compareTo(new BigDecimal(-1.00)) == 0) {
+            TotalPurchaseAmt = TotalPurchaseAmt.subtract(purchase.getPurchaseAmt());
             purchase.setPurchaseAmt(amt);
-            TotalPurchaseAmt = TotalPurchaseAmt + amt;
+            TotalPurchaseAmt = TotalPurchaseAmt.add(amt);
         }
 
         // Checks if date is empty
@@ -131,7 +134,7 @@ public class PurchaseHandler {
         // Pulls the object from PurchaseList at position into a temp object
         Purchase purchase = PurchaseList.get(position);
         // Updates the TotalPurchaseAmount
-        TotalPurchaseAmt = TotalPurchaseAmt - purchase.getPurchaseAmt();
+        TotalPurchaseAmt = TotalPurchaseAmt.subtract(purchase.getPurchaseAmt());
         // Removes it from the list.
         PurchaseList.remove(position);
         sortList();
@@ -145,7 +148,8 @@ public class PurchaseHandler {
         // Removes all purchases from list and resets values to default.
         PurchaseList.clear();
         Top = 0;
-        TotalPurchaseAmt = 0.00f;
+        TotalPurchaseAmt = BigDecimal.ZERO;
+        TotalPurchaseAmt = TotalPurchaseAmt.setScale(2,RoundingMode.HALF_EVEN);
     }
 
     /**
@@ -191,7 +195,7 @@ public class PurchaseHandler {
      * Gets the TotalPurchaseAmt value
      * @return TotalPurchaseAmt  the accumulation of all Purchase amounts on the arrayList
      */
-    public float getTotalPurchaseAmt(){
+    public BigDecimal getTotalPurchaseAmt(){
         return TotalPurchaseAmt;
     }
 

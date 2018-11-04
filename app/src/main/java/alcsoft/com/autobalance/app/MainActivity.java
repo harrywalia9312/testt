@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity
         // Loads the PurchaseList object in a temp string and loads it to the handler object
         data = sharedPreferences.getString("PurchaseList", "none");
         int tempint = sharedPreferences.getInt("TopValue", 0);
-        float tempfl = sharedPreferences.getFloat("NetPAmt", 0.00f);
+        BigDecimal tempfl = new BigDecimal(sharedPreferences.getString("NetPAmt", "0.00"));
         purchaseHandler = new PurchaseHandler(data, tempint, tempfl);
 
 
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         // Saves the Top Value to storage
         editor.putInt("TopValue",purchaseHandler.getTop());
         // Saves the Total Purchase Amount to storage
-        editor.putFloat("NetPAmt", purchaseHandler.getTotalPurchaseAmt());
+        editor.putString("NetPAmt", purchaseHandler.getTotalPurchaseAmt().toString());
         editor.commit();
     }
 
@@ -141,26 +142,26 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    public void onIncomeEdit(float income) {
+    public void onIncomeEdit(BigDecimal income) {
         System.out.println(income);
         userData.setUserMonthlyIncome(income);
     }
 
     @Override
-    public void onExpensesEdit(float expenses) {
+    public void onExpensesEdit(BigDecimal expenses) {
         System.out.println(expenses);
         userData.setUserMonthlyExpenses(expenses);
     }
 
     @Override
-    public void onPurchaseAdd(String name, float amt) {
+    public void onPurchaseAdd(String name, BigDecimal amt) {
         Calendar calendar = Calendar.getInstance();
         Date date1 = calendar.getTime();
         purchaseHandler.addPurchase(name, date1, amt);
     }
 
     @Override
-    public void onPurchaseEdit(int position, Date date, String name, float amt) {
+    public void onPurchaseEdit(int position, Date date, String name, BigDecimal amt) {
         purchaseHandler.editPurchaseAt(position, date, name, amt);
     }
 
@@ -192,7 +193,7 @@ public class MainActivity extends AppCompatActivity
 
     public String getCurrentAmtAvail() {
         NumberFormat in = NumberFormat.getCurrencyInstance();
-        return in.format(userData.getUserMonthlyNetIncome() - purchaseHandler.getTotalPurchaseAmt());
+        return in.format(userData.getUserMonthlyNetIncome().subtract(purchaseHandler.getTotalPurchaseAmt()));
     }
 
     public ArrayList<Purchase> getCurrentList() {
@@ -212,17 +213,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public Float getRawCurrentPurchaseAmtTotal() {
+    public BigDecimal getRawCurrentPurchaseAmtTotal() {
         return purchaseHandler.getTotalPurchaseAmt();
     }
 
     @Override
-    public Float getRawCurrentIncome() {
+    public BigDecimal getRawCurrentIncome() {
         return userData.getUserMonthlyIncome();
     }
 
     @Override
-    public Float getRawCurrentNetIncome() {
+    public BigDecimal getRawCurrentNetIncome() {
         return userData.getUserMonthlyNetIncome();
     }
 

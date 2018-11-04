@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+
 import alcsoft.com.autobalance.features.shared.interfaces.MainDataInterface;
 import alcsoft.com.autobalance.R;
 
@@ -129,8 +131,8 @@ public class OptionsFragment extends Fragment {
                     // Checks Input is empty
                     if (!MonthlyIncomeInputBox.getText().toString().isEmpty()) {
                         //Checks if Float value is valid
-                        float temp = Float.valueOf(MonthlyIncomeInputBox.getText().toString());
-                        if (temp <= 99999999.99f) {
+                        BigDecimal temp = new BigDecimal(MonthlyIncomeInputBox.getText().toString());
+                        if (temp.compareTo(new BigDecimal(99999999.99)) < 0) {
                             // Saves the value
                             mainDataInterface.onIncomeEdit(temp);
                             // Refreshes TextView boxes
@@ -162,8 +164,8 @@ public class OptionsFragment extends Fragment {
                     // Checks Input is empty
                     if (!MonthlyExpensesInputBox.getText().toString().isEmpty()) {
                         //Checks if Float value is valid
-                        float temp = Float.valueOf(MonthlyExpensesInputBox.getText().toString());
-                        if (temp <= 99999999.99f) {
+                        BigDecimal temp = new BigDecimal(MonthlyExpensesInputBox.getText().toString());
+                        if (temp.compareTo(new BigDecimal(99999999.99)) < 0) {
                             // Saves the value
                             mainDataInterface.onExpensesEdit(temp);
                             // Refreshes TextView boxes
@@ -193,7 +195,7 @@ public class OptionsFragment extends Fragment {
     }
 
     public void onUserDataReset() {
-        mainDataInterface.onIncomeEdit(0.00f);
-        mainDataInterface.onExpensesEdit(0.00f);
+        mainDataInterface.onIncomeEdit(BigDecimal.ZERO);
+        mainDataInterface.onExpensesEdit(BigDecimal.ZERO);
     }
 }

@@ -1,12 +1,14 @@
 package alcsoft.com.autobalance.features.purchases;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
  * Purchase Object
  * This object models the Purchase information of a Purchase.
  * @author ALCRamirez94
- * @version 2.0 (11/2/2017)
+ * @version 3.0 (11/2/2017)
+ * @since 1.0
  */
 
 public class Purchase {
@@ -21,7 +23,7 @@ public class Purchase {
     /**
      * The amount of the purchase
      */
-    private float PurchaseAmt;
+    private BigDecimal PurchaseAmt;
 
     /**
      * Constructs the object using the parameters to define it.
@@ -29,7 +31,7 @@ public class Purchase {
      * @param date  the date of the purchase
      * @param amt  the amount of the purchase
      */
-    public Purchase(String name, Date date, float amt) {
+    public Purchase(String name, Date date, BigDecimal amt) {
         this.PurchaseName = name;
         this.PurchaseDate = date;
         this.PurchaseAmt = amt;
@@ -48,7 +50,7 @@ public class Purchase {
      * Sets the PurchaseAmount to the defined parameter.
      * @param amt  the new amount of the purchase
      */
-    void setPurchaseAmt(Float amt){
+    void setPurchaseAmt(BigDecimal amt){
         PurchaseAmt = amt;
     }
 
@@ -80,7 +82,7 @@ public class Purchase {
      * Gets the Purchase Amount
      * @return PurchaseAmt  the amount of the purchase
      */
-    public float getPurchaseAmt() {
+    public BigDecimal getPurchaseAmt() {
         return PurchaseAmt;
     }
 }

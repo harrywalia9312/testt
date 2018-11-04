@@ -16,6 +16,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+
 import alcsoft.com.autobalance.features.shared.dialogs.AddPurchaseDialog;
 import alcsoft.com.autobalance.features.shared.interfaces.AddPurchaseDialogListener;
 import alcsoft.com.autobalance.features.shared.interfaces.MainDataInterface;
@@ -96,8 +98,8 @@ public class QuickInfoFragment extends Fragment implements AdapterView.OnItemCli
         temp = mainDataInterface.getCurrentAmtAvail();
         spendingAmtText.setText(temp);
 
-        if (mainDataInterface.getRawCurrentIncome() != 0.00f) {
-            float compare = Math.round(mainDataInterface.getRawCurrentPurchaseAmtTotal() / mainDataInterface.getRawCurrentNetIncome() * 100);
+        if (mainDataInterface.getRawCurrentIncome().equals(new BigDecimal(0.00))) {
+            float compare = Float.valueOf(mainDataInterface.getRawCurrentPurchaseAmtTotal().divide(mainDataInterface.getRawCurrentNetIncome()).multiply(new BigDecimal(100.00)).toString());
             System.out.println(compare);
 
             if (compare >= 100) {
@@ -142,7 +144,7 @@ public class QuickInfoFragment extends Fragment implements AdapterView.OnItemCli
 
     @Override
     public void onDialogAddPurchase(String name, String amt) {
-        mainDataInterface.onPurchaseAdd(name, Float.valueOf(amt));
+        mainDataInterface.onPurchaseAdd(name, new BigDecimal(amt));
         listAdapter.notifyDataSetChanged();
         refreshTextView();
     }

@@ -1,5 +1,6 @@
 package alcsoft.com.autobalance.features.shared.interfaces;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,14 +20,14 @@ public interface MainDataInterface {
      *
      * @param income the user's prompted monthly income
      */
-    void onIncomeEdit(float income);
+    void onIncomeEdit(BigDecimal income);
 
     /**
      * Passes the value of MonthlyExpenses between fragment and activity.
      *
      * @param expenses the user's prompted monthly expenses
      */
-    void onExpensesEdit(float expenses);
+    void onExpensesEdit(BigDecimal expenses);
 
     /**
      * Gets the MonthlyIncome value from UserData object.
@@ -63,7 +64,7 @@ public interface MainDataInterface {
      * @param name the name of the purchase (can be empty)
      * @param amt  the amount of the purchase (cannot be empty)
      */
-    void onPurchaseAdd(String name, float amt);
+    void onPurchaseAdd(String name, BigDecimal amt);
 
     /**
      * Based on user input, edits a specific purchase in the purchase list
@@ -74,7 +75,7 @@ public interface MainDataInterface {
      * @param name     the new name of the purchase
      * @param amt      the new amount of the purchase
      */
-    void onPurchaseEdit(int position, Date date, String name, float amt);
+    void onPurchaseEdit(int position, Date date, String name, BigDecimal amt);
 
     /**
      * Based on user input, removes a specific purchase in the purchase list.
@@ -110,9 +111,9 @@ public interface MainDataInterface {
      */
     String getPurchaseInfoAt(int position);
 
-    Float getRawCurrentPurchaseAmtTotal();
+    BigDecimal getRawCurrentPurchaseAmtTotal();
 
-    Float getRawCurrentIncome();
+    BigDecimal getRawCurrentIncome();
 
-    Float getRawCurrentNetIncome();
+    BigDecimal getRawCurrentNetIncome();
 }
