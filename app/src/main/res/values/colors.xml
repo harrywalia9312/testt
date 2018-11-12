@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3f51b5</color>
+    <!--  App Colors -->
+    <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorMainBackground">#1c2033</color>
+    <color name="colorListBackground">#27304b</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- List Selection Colors-->
+    <color name="colorItemNotSelected">#3b4563</color>
+    <color name="colorItemSelected">#303F9F</color>
+
+    <!-- BudgetContainer Layout Colors -->
+    <color name="colorBudgetSpent">#FF0000</color>
+    <color name="colorBudgetAllocation">#ffffff</color>
+    <color name="colorBudgetAvailable">#008000</color>
+
+    <!-- -->
     <color name="colorNoFunds">#ffcc0000</color>
     <color name="colorLowFunds">#ffff4444</color>
     <color name="colorMediumLowFunds">#ffff8800</color>
     <color name="colorMediumHiFunds">#ffffbb33</color>
     <color name="colorHighLowFunds">#ff669900</color>
     <color name="colorHighFullFunds">#ff99cc00</color>
+
+    <!-- Text Color -->
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorGrey">#D3D3D3</color>
+    <color name="colorBlack">#000000</color>
 </resources>

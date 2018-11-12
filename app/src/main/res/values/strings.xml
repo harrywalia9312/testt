@@ -1,6 +1,10 @@
 <resources>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
     <string name="app_name">AutoBalance</string>
-    <string name="app_ver">Version 2.0</string>
+    <string name="app_ver">Version 3.0</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -9,20 +13,23 @@
     <string name="action_PLAddPurchase">Add Purchase</string>
     <string name="action_PLSettings">Reset Purchase List</string>
     <string name="action_OPSettings">Reset Values</string>
+    <string name="action_BLAddNewBudget">Add New Budget</string>
+    <string name="action_BLSettings">Reset Budget List</string>
 
     <!-- Main_Drawer menu names-->
     <string name="MenuOption1">Available Balance</string>
     <string name="MenuOption2">Manage Purchases</string>
-    <string name="MenuOption3">Setup Balance</string>
+    <string name="MenuOption3">Manage Budgets</string>
+    <string name="MenuOption4">Setup Balance</string>
 
     <!--  Main Layout -->
-    <string name="TopText1">You currently have</string>
+    <string name="TopText1">Overall, you currently have</string>
     <string name="TopText2">to spend.</string>
     <string name="MiddleText">Your total amount spent on purchases is</string>
-    <string name="BottomTitleText1">Most Recent Purchases</string>
+    <string name="BottomTitleText1">Budgets</string>
     <string name="QuickAddPurchaseDialogTitle">Quick Add Purchase</string>
 
-    <!-- Purchase List -->
+    <!-- Purchase Layout -->
     <string name="PurchaseInputText1">Purchase Name</string>
     <string name="PurchaseInputText2">Purchase Amount</string>
     <string name="PurchaseListText1">Tap and hold a purchase for more options</string>
@@ -35,6 +42,15 @@
     <string name="PurchaseEditSuccess">Purchase info updated!</string>
     <string name="PurchaseAddSuccess">Purchase Added!</string>
 
+    <!-- Budget Layout -->
+    <string name="BudgetInputText1">Budget Name</string>
+    <string name="BudgetInputText2">Budget Amount</string>
+    <string name="BudgetListText1">Tap and hold a budget for more options</string>
+    <string name="BudgetListResetSuccess">All Budgets were removed!</string>
+    <string name="BudgetLegendText1">Allocated Funds</string>
+    <string name="BudgetLegendText2">Amount Available</string>
+    <string name="BudgetLegendText3">Amount Spent</string>
+
     <!-- Options Layout -->
     <string name="OptionsTopText1">Tap on the values to edit them</string>
     <string name="OptionsIncomeText1">Monthly Income</string>
@@ -46,7 +62,7 @@
     <string name="OptionsExpensesTooltip">Monthly Expenses - These are your monthly fixed expenses (eg. fixed payments, etc).</string>
     <string name="OptionsResetSuccess">User values reset!</string>
 
-    <!-- Dialog Texts -->
+    <!-- Dialogs -->
     <string name="PurchaseConfirmDeleteTitle">Delete Purchase</string>
     <string name="PurchaseConfirmDeleteMessage">Are you sure?</string>
     <string name="PurchaseConfirmResetTitle">Reset List</string>
