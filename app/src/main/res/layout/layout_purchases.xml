@@ -40,7 +40,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
         android:text="@string/PurchaseListText2"
-        android:paddingBottom="10dp" />
+        android:paddingBottom="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp" />
 
     <TextView
         android:id="@+id/PL_TotalPurchaseAmtText"
@@ -51,6 +53,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:textAlignment="center"
-        android:paddingBottom="10dp" />
+        android:paddingBottom="10dp"
+        android:layout_toEndOf="@id/PL_BottomTitle"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

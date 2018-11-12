@@ -32,7 +32,7 @@ import alcsoft.com.autobalance.features.shared.interfaces.AddPurchaseDialogListe
 
 /**
  * PurchasesFragment
- * This class uses the purchases_layout and handles input and output Purchase Objects
+ * This class uses the layout_purchases and handles input and output Purchase Objects
  * and updates the list.
  * @author ALCRamirez94
  * @version 2.0 (11/8/2017)
@@ -65,7 +65,7 @@ public class PurchasesFragment extends Fragment implements AdapterView.OnItemLon
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.purchases_layout, container, false);
+        view = inflater.inflate(R.layout.layout_purchases, container, false);
         /* Calls method to show options in action bar */
         setHasOptionsMenu(true);
         /* Sets the Transaction total amount text */

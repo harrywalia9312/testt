@@ -66,7 +66,7 @@ public class OptionsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.options_layout, container, false);
+        View view = inflater.inflate(R.layout.layout_options, container, false);
         // Creates the options menu in the actionbar
         setHasOptionsMenu(true);
         // Initialization of EditTexts

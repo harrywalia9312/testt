@@ -103,7 +103,8 @@
         android:layout_marginLeft="3dp"
         android:textColor="#ffffff"
         android:text="@string/OptionsIncomeTooltip"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:layout_marginStart="3dp" />
 
     <TextView
         android:id="@+id/OF_MonthlyExpensesInfoText"
@@ -115,6 +116,7 @@
         android:layout_marginTop="1dp"
         android:textColor="#ffffff"
         android:text="@string/OptionsExpensesTooltip"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:layout_marginStart="3dp" />
 
 </RelativeLayout>

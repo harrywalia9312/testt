@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/dialog_editBudgetName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:textAlignment="center"
+        android:focusable="true"
+        android:textIsSelectable="true"
+        android:inputType="textCapWords"
+        android:hint="@string/BudgetInputText1"
+        />
+    <EditText
+        android:id="@+id/dialog_editBudgetAllocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:textAlignment="center"
+        android:focusable="true"
+        android:layout_below="@id/dialog_editBudgetName"
+        android:textIsSelectable="true"
+        android:inputType="numberDecimal"
+        android:hint="@string/BudgetInputText2"
+        />
+</RelativeLayout>

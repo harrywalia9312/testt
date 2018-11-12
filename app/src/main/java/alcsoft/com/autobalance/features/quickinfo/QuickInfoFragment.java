@@ -56,7 +56,7 @@ public class QuickInfoFragment extends Fragment implements AdapterView.OnItemCli
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        view = inflater.inflate(R.layout.quickinfo_layout, container, false);
+        view = inflater.inflate(R.layout.layout_quickinfo, container, false);
         // Updates the spending amount to current value
         refreshTextView();
 
